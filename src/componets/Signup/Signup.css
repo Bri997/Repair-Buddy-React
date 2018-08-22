@@ -1,4 +1,46 @@
+.SignUp {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 15vw;
+}
+.SignUp h2 {
+  color: #3389ff;
+}
 .SignUp input {
+  text-align: center;
+  background-color: #e1edff;
+  height: 47px;
+  width: 330px;
   display: block;
-  margin: 10px;
+  margin: 5px auto;
+  border: none;
+  border-radius: 5px;
+}
+
+:placeholder-shown {
+  color: #6d89af !important;
+  font-size: 1rem;
+}
+.SignUp a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.SignUp button {
+  margin-top: 10px;
+  background-color: #3389ff;
+  height: 47px;
+  width: 330px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.SignUp button:hover {
+  background-color: #2173e6;
+}
+
+.SignUp a :visited {
+  color: rgb(15, 132, 201);
 }

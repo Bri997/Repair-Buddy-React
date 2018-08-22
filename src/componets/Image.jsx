@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 class Image extends Component {
   state = {
-    url: "https://picsum.photos/300/200"
+    // url: "https://picsum.photos/300/200?random"
   };
   render() {
     return (
-      <div>
-        <img src={this.state.url} />
-      </div>
+      <Fragment>
+        <img src={this.props.image.url} />
+        <h3>{this.props.image.imageDescription}</h3>
+      </Fragment>
     );
   }
 }

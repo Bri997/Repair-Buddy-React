@@ -1,8 +1,12 @@
 import React, { Component, Fragment } from "react";
+import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import "./Login.css";
 class Login extends Component {
+  onSubmit(values) {
+    console.log(values);
+  }
   state = {};
   render() {
     return (
@@ -11,15 +15,31 @@ class Login extends Component {
           Log In
           <h3> Friendly Way To Track Your Repairs</h3>
           <h2> Repair Buddy</h2>
-          <input type="email" placeholder="Your Email" />
-          <input type="password" placeholder="Password" />
-          <button>Log In</button>
+          <form
+            onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+          >
+            <Field
+              name="email"
+              type="email"
+              placeholder="Your Email"
+              component="input"
+            />
+            <Field
+              name="password"
+              type="password"
+              placeholder="Password"
+              component="input"
+            />
+            <button>Log In</button>
+          </form>
           <p>Don't have an account?</p>
-          <Link to="/singup">Sign Up Here</Link>
+          <Link to="/signup">Sign Up Here</Link>
         </div>
       </Fragment>
     );
   }
 }
 
-export default Login;
+export default reduxForm({
+  form: "Login"
+})(Login);

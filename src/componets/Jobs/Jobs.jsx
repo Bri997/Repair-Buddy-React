@@ -12,7 +12,7 @@ class Jobs extends Component {
     });
     return (
       <div>
-        Jobs
+        <h1>Jobs</h1>
         <div className="NewJobBtn">
           <a href="#">+ Add New Job</a>
         </div>

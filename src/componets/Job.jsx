@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Image from "./Image";
+
+import Tags from "./Tags/Tags";
 class Job extends Component {
   state = {};
   render() {
@@ -7,9 +10,11 @@ class Job extends Component {
       <Fragment>
         <div className="UserDisplay">
           <div className="JobArea">
-            <Image />
+            <img src={this.props.job.images[0].url} />
             <h3>{this.props.job.jobName}</h3>
             <p>{this.props.job.jobInfo}</p>
+            <Link to={`/JobDetail/${this.props.job.id}`}> Continue </Link>
+            <Tags />
           </div>
         </div>
       </Fragment>
