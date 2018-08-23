@@ -1,11 +1,17 @@
 import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
-
+import { signUpActions } from "../../actions";
 import "./Signup.css";
 
 class SignUp extends Component {
   onSubmit(values) {
-    console.log(values);
+    //validate password
+    let userDetails = {
+      name: values.name,
+      email: values.email,
+      password: values.password
+    };
+    this.props.dispatch(signUpActions(userDetails));
   }
 
   render() {
