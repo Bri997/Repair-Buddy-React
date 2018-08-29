@@ -13,17 +13,31 @@ const initalState = {
           imageDescription: "Starting Tear Down",
           Date: "",
           tags: ["lock", "door", "trim removal"]
+        },
+        {
+          url: "https://picsum.photos/200/300/?random",
+          imageDescription: "Tear Down Part 2 of Job",
+          Date: "",
+          tags: ["door", "speaker", "trim removal", "door lock"]
         }
       ]
     },
     {
       id: 2,
-      jobName: " GLI",
-      jobInfo: "Need to change door ",
+      jobName: "Nissan Rogue",
+      jobInfo: "Oil Change ",
       images: [
         {
           url: "https://picsum.photos/300/200/?random",
-          imageDescription: "Something"
+          imageDescription: "Engine Cover",
+          Date: "",
+          tags: ["React", "is crazy"]
+        },
+        {
+          url: "https://picsum.photos/200/300/?random",
+          imageDescription: "Engine 2nd picture",
+          Date: "",
+          tags: ["Engine", "oil pan"]
         }
       ]
     }

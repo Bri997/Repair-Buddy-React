@@ -1,23 +1,27 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Login from "./componets/Login/Login";
-import Jobs from "./componets/Jobs/Jobs.jsx";
-import JobDetail from "./componets/JobDetail/JobDetailbs";
-import ImageDetail from "./componets/ImageDetail/ImageDetail";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
+import Jobs from "./components/Jobs/Jobs.jsx";
+import JobDetail from "./components/JobDetail/JobDetail";
+import ImageDetail from "./components/ImageDetail/ImageDetail";
+import Layout from "./components/Layout/Layout";
+import SignUp from "./components/Signup/Signup";
 
 class App extends Component {
   render() {
     return (
+      // <Layout>
+      //   <Login />
+      // </Layout>
       <Router>
-        <div>
-          <Link to="/jobs">Jobs</Link>
-          <Route exact path="/" Component={Login} />
-          <Route exact path="/jobs" Component={Jobs} />
-          <Route exact path="/JobDetail" Component={JobDetail} />
-          <Route exact path="/ImageDetail" Component={ImageDetail} />
-        </div>
+        <Layout>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/Jobs" component={Jobs} />
+          <Route exact path="/JobDetail/:id" component={JobDetail} />
+          <Route exact path="/ImageDetail" component={ImageDetail} />
+          <Route exact path="/SignUp" component={SignUp} />
+        </Layout>
       </Router>
     );
   }

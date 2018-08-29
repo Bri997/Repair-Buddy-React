@@ -15,7 +15,7 @@ export const signUpActions = user => dispatch => {
       }
       return res.json().then(user => {
         user.token = res.headers.get("x-auth-token");
-        console.log(res.headers);
+        console.log(user);
         return user;
       });
     })

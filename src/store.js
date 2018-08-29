@@ -7,7 +7,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     form: formReducer,
-    reducer: repairReducer
+    repair: repairReducer
   }),
   /* preloadedState, */ composeEnhancers(applyMiddleware(thunk))
 );
