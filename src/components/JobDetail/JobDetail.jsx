@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./JobDetail.css";
 import Job from "../Job";
 import Images from "../Images.jsx";
+import { selectJob } from '../../actions';
 
 class JobDetail extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class JobDetail extends Component {
     this.job = this.props.jobs.find(
       job => job.id == this.props.match.params.id
     );
+
+    this.props.dispatch(selectJob(this.job));
   }
 
   render() {
@@ -28,7 +31,7 @@ class JobDetail extends Component {
         <h1 />
         <div className="JobDetailArea">
           {this.job.jobName} {this.job.jobInfo}
-          <Images images={this.job.images} />
+          <Images images={this.job.images} jobId={this.job.id}/>
         </div>
       </React.Fragment>
     );

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { connect } from 'react-redux';
+import { createTag } from '../../../../actions';
 
 class TagCreatorForm extends Component {
   constructor(props) {
@@ -10,10 +12,8 @@ class TagCreatorForm extends Component {
     );
   }
   createNewTag(input) {
-    let newTag = {
-      tags: [""]
-    };
-    this.props.dispacth(tagCreatorAction(newTag));
+    
+    this.props.dispacth(createTag(input, this.props.imageId));
   }
   render() {
     return (
@@ -22,7 +22,7 @@ class TagCreatorForm extends Component {
           <form
             onSubmit={this.props.handleSubmit(input => this.onSubmit(input))}
           >
-            <Field name="Tag" type="text" placeholder="Tag" component="input" />
+            <Field name="tag" type="text" placeholder="Tag" component="input" />
             <button>Add</button>
           </form>
         </div>
@@ -31,5 +31,10 @@ class TagCreatorForm extends Component {
   }
 }
 
-export default TagCreatorForm;
-reduxForm({ form: "TagCreatorForm" })(TagCreatorForm);
+const mapStateToProps = state => ({
+  selectedJob: state.repair.selecteJob
+});
+
+const ConnectedTagCreator = connect(mapStateToProps)(TagCreatorForm);
+
+export default reduxForm({ form: "TagCreatorForm" })(ConnectedTagCreator);

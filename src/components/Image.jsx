@@ -11,7 +11,7 @@ class Image extends Component {
           <h3>{this.props.image.imageDescription}</h3>
           <button>Image Details</button>
 
-          <Tags tags={this.props.image.tags} />
+          <Tags image={this.props.image} />
         </div>
       </Fragment>
     );

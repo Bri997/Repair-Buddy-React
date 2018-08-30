@@ -46,7 +46,7 @@ const initalState = {
       ]
     }
   ],
-
+  selectedJob: null,
   user: [
     {
       name: "Brian"
@@ -60,6 +60,8 @@ const repairReducer = (state = initalState, action) => {
     return Object.assign({}, state, { user: action.user });
   } else if (action.type === actions.USER_CREATION_FAILURE) {
     return Object.assign({}, state, { err: action.err });
+  } else if (action.type === actions.SELECT_JOB) {
+    return Object.assign({}, state, {selectedJob: action.job});
   }
   return state;
 };

@@ -18,7 +18,7 @@ class Job extends Component {
             <Link to={`/JobDetail/${this.props.job.id}`}>Continue >></Link>
 
             <p> {this.props.job.id}</p>
-            <Tags className="Tag" tags={this.props.job.images[0].tags} />
+            <Tags className="Tag" image={this.props.job.images[0]} />
           </div>
         </div>
       </Fragment>

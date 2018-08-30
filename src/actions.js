@@ -1,5 +1,7 @@
 const USER_CREATION_SUCESS = "USER_CREATION_SUCESS";
 const USER_CREATION_FAILURE = "USER_CREATION_FAILURE";
+const SELECT_JOB = "SELECT_JOB";
+const CREATE_TAG = "CREATE_TAG";
 
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
@@ -39,9 +41,24 @@ const userCreationFailure = err => ({
   err
 });
 
+const selectJob = job => ({
+  type: SELECT_JOB,
+  job
+});
+
+const createTag = (tag, imageId) => ({
+  type: CREATE_TAG,
+  tag,
+  imageId
+})
+
 export {
   userCreationSucess,
   userCreationFailure,
+  selectJob,
+  createTag,
   USER_CREATION_SUCESS,
-  USER_CREATION_FAILURE
+  USER_CREATION_FAILURE,
+  SELECT_JOB,
+  CREATE_TAG
 };
