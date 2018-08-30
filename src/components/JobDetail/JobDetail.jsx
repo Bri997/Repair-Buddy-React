@@ -11,7 +11,7 @@ class JobDetail extends Component {
     super(props);
 
     this.job = this.props.jobs.find(
-      job => (job.id = this.props.match.params.id)
+      job => job.id == this.props.match.params.id
     );
   }
 

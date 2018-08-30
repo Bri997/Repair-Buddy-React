@@ -5,7 +5,9 @@ class Tag extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>{this.props.name}</p>
+        <div className="Tag">
+          <p>{this.props.name}</p>
+        </div>
       </React.Fragment>
     );
   }

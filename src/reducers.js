@@ -9,12 +9,14 @@ const initalState = {
       //this is the images within the job
       images: [
         {
+          id: 1,
           url: "https://picsum.photos/200/300/?random",
           imageDescription: "Starting Tear Down",
           Date: "",
           tags: ["lock", "door", "trim removal"]
         },
         {
+          id: 2,
           url: "https://picsum.photos/200/300/?random",
           imageDescription: "Tear Down Part 2 of Job",
           Date: "",
@@ -28,12 +30,14 @@ const initalState = {
       jobInfo: "Oil Change ",
       images: [
         {
+          id: 3,
           url: "https://picsum.photos/300/200/?random",
           imageDescription: "Engine Cover",
           Date: "",
           tags: ["React", "is crazy"]
         },
         {
+          id: 4,
           url: "https://picsum.photos/200/300/?random",
           imageDescription: "Engine 2nd picture",
           Date: "",

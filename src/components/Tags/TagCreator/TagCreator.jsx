@@ -5,7 +5,7 @@ class TagCreator extends Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={this.props.addTag}>Create Tag</button>
+        <p onClick={this.props.addTag}>+ Create Tag</p>
       </React.Fragment>
     );
   }
