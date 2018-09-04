@@ -11,9 +11,7 @@ const layout = props => (
       <li>
         <Link to="/Jobs">Jobs</Link>
       </li>
-      <li>
-        <Link to="/JobDetail">Job Detail</Link>
-      </li>
+
       <li>
         <Link to="/SignUp">Sign Up</Link>
       </li>

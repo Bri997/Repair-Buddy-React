@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { connect } from 'react-redux';
-import { createTag } from '../../../../actions';
+import { connect } from "react-redux";
+import { createTag } from "../../../../actions";
 
 class TagCreatorForm extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
 
-    this.image = this.props.jobs.images.find(
-      image => image.id == this.props.match.params.id
-    );
+    //   this.image = this.props.jobs.images.find(
+    //     image => image.id == this.props.match.params.id
+    //   );
   }
   createNewTag(input) {
-    
     this.props.dispacth(createTag(input, this.props.imageId));
   }
   render() {

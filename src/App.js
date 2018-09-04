@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Jobs from "./components/Jobs/Jobs.jsx";
-import JobDetail from "./components/JobDetail/JobDetail";
+import JobDetail from "./components/Jobs/Job/JobDetail/JobDetail";
 import ImageDetail from "./components/ImageDetail/ImageDetail";
 import Layout from "./components/Layout/Layout";
 import SignUp from "./components/Signup/Signup";
