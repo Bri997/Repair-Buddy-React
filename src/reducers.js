@@ -46,7 +46,7 @@ const initalState = {
     }
   ],
   selectedJob: null,
-  selectedImage: null,
+
   user: [
     {
       name: "Brian"
@@ -62,6 +62,13 @@ const repairReducer = (state = initalState, action) => {
     return Object.assign({}, state, { err: action.err });
   } else if (action.type === actions.SELECT_JOB) {
     return Object.assign({}, state, { selectedJob: action.job });
+  } else if (action.type === actions.CREATE_TAG) {
+    let image = state.selectedJob.images.find(i => i.id === action.imageId);
+    image.tags.push(action.tag);
+    console.log(image);
+    return Object.assign({}, state, {
+      selectedJob: { images: [...state.selectedJob.images] }
+    });
   }
   return state;
 };

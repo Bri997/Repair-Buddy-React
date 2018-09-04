@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { connect } from "react-redux";
 import { createTag } from "../../../../actions";
+import { connect } from "react-redux";
 
 class TagCreatorForm extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
-
-    //   this.image = this.props.jobs.images.find(
-    //     image => image.id == this.props.match.params.id
-    //   );
   }
-  createNewTag(input) {
-    this.props.dispacth(createTag(input, this.props.imageId));
+  onSubmit(input) {
+    this.props.dispatch(createTag(input.tag, this.props.imageId));
   }
   render() {
     return (
@@ -31,10 +26,6 @@ class TagCreatorForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  selectedJob: state.repair.selecteJob
-});
-
-const ConnectedTagCreator = connect(mapStateToProps)(TagCreatorForm);
-
-export default reduxForm({ form: "TagCreatorForm" })(ConnectedTagCreator);
+const mapStateToProps = state => ({ selectedJob: state.repair.selectedJob });
+const connectedForm = connect(mapStateToProps)(TagCreatorForm);
+export default reduxForm({ form: "TagCreatorForm" })(connectedForm);

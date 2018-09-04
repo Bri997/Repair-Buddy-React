@@ -16,7 +16,6 @@ class Tags extends Component {
     if (!this.props.image.tags) {
       return <React.Fragment />;
     }
-    console.log(this.props);
 
     const tags = this.props.image.tags.map((tag, index) => {
       return <Tag name={tag} key={index} />;

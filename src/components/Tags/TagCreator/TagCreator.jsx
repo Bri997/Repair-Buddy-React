@@ -2,14 +2,24 @@ import React, { Component } from "react";
 import TagCreatorForm from "../TagCreator/TagCreatorForm/TagCreatorForm";
 
 class TagCreator extends Component {
-  state = {};
+  state = {
+    show: false
+  };
+
   render() {
+    let form = this.state.show ? (
+      <TagCreatorForm imageId={this.props.imageId} />
+    ) : (
+      ""
+    );
     return (
       <React.Fragment>
         <div>
-          <p onClick={this.props.addTag}>+ Create Tag</p>
+          <p onClick={() => this.setState({ show: !this.state.show })}>
+            + Create Tag
+          </p>
         </div>
-        <TagCreatorForm />
+        {form}
       </React.Fragment>
     );
   }
