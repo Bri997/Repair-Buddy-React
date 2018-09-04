@@ -1,23 +1,22 @@
-import React, { Component, Fragment } from "react";
-import Tags from "../components/Tags/Tags";
-import "./Image.css";
+// import React, { Component, Fragment } from "react";
+// import Tags from "../components/Tags/Tags";
+// import "./Image.css";
 
-class Image extends Component {
-  render() {
-    return (
-      <Fragment>
-        <div className="Image">
-          <img src={this.props.image.url} />
-          <h3>{this.props.image.imageDescription}</h3>
-          <button>Image Details</button>
+// class Image extends Component {
+//   render() {
+//     return (
+//       <Fragment>
+//         <div className="Image">
+//           <img src={this.props.image.url} />
+//           <h3>{this.props.image.imageDescription}</h3>
 
-          <Tags tags={this.props.image.tags} />
-        </div>
-      </Fragment>
-    );
-  }
-}
+//           <Tags image={this.props.image} />
+//         </div>
+//       </Fragment>
+//     );
+//   }
+// }
 
-export default Image;
+// export default Image;
 
-//mkdir for images to add css and test
+// //mkdir for images to add css and test

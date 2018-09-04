@@ -1,23 +1,38 @@
 import React, { Component } from "react";
-import Tag from "./Tag/Tag";
+import Tag from "../Tags/Tag/Tag";
 import "./Tags.css";
 import TagCreator from "./TagCreator/TagCreator";
+import TagCreatorForm from "./TagCreator/TagCreatorForm/TagCreatorForm";
 
 class Tags extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showForm: false
+    };
+  }
+
   render() {
-    if (!this.props.tags) {
+    if (!this.props.image.tags) {
       return <React.Fragment />;
     }
-    const Tags = this.props.tags.map((tag, index) => {
+    console.log(this.props);
+
+    const tags = this.props.image.tags.map((tag, index) => {
       return <Tag name={tag} key={index} />;
     });
+
+    const form = this.state.showForm ? (
+      <TagCreatorForm />
+    ) : (
+      <TagCreator imageId={this.props.image.id} />
+    );
+
     return (
       <React.Fragment>
-        <div className="TagCreator">
-          <TagCreator />
-        </div>
+        <div className="TagCreator">{form}</div>
 
-        {Tags}
+        {tags}
       </React.Fragment>
     );
   }

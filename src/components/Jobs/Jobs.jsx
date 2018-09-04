@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Jobs.css";
 
-import Job from "../Job";
+import Job from "../Jobs/Job/Job";
+import AddNewJob from "../Jobs/Job/AddNewJob/AddNewJob";
 
 class Jobs extends Component {
   render() {
@@ -13,8 +14,9 @@ class Jobs extends Component {
       <div>
         <h1>Jobs</h1>
         <div className="NewJobBtn">
-          <a href="#">+ Add New Job</a>
+          <a href="/">+ Add New Job</a>
         </div>
+        <AddNewJob />
         <div>{jobs}</div>
       </div>
     );
