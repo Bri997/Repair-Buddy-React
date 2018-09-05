@@ -58,11 +58,30 @@ const initalState = {
 const repairReducer = (state = initalState, action) => {
   if (action.type === actions.USER_CREATION_SUCESS) {
     return Object.assign({}, state, { user: action.user });
-  } else if (action.type === actions.USER_CREATION_FAILURE) {
+  }
+
+  //
+  else if (action.type === actions.USER_CREATION_FAILURE) {
     return Object.assign({}, state, { err: action.err });
-  } else if (action.type === actions.SELECT_JOB) {
+  }
+
+  //
+  else if (action.type === actions.SELECT_JOB) {
     return Object.assign({}, state, { selectedJob: action.job });
-  } else if (action.type === actions.CREATE_TAG) {
+  }
+
+  //
+  else if (action.type === actions.NEW_JOB_CREATION_SUCESS) {
+    return Object.assign({}, state, { jobs: [...state.jobs, action.job] });
+  }
+
+  //
+  else if (action.type === actions.NEW_JOB_CREATION_FAILURE) {
+    return Object.assign({}, state, { err: action.err });
+  }
+
+  //
+  else if (action.type === actions.CREATE_TAG) {
     let image = state.selectedJob.images.find(i => i.id === action.imageId);
     image.tags.push(action.tag);
     console.log(image);

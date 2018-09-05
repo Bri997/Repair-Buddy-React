@@ -1,35 +1,36 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-// import {newJobActions} from "../../../../../actions"
+// import {newImageAction} from "../../../../../actions"
 
 import "./AddNewImageForm.css";
 
 class AddNewImageForm extends Component {
-  state = {};
+  fileSelecthandler = event => {
+    console.log(event.target);
+  };
+
+  validate = event => {
+    console.log(event.target);
+  };
   render() {
     return (
       <React.Fragment>
-        <div className="NewImageForm">
+        <div className="AddNewImageForm">
           <form>
             <Field
-              name="jobName"
-              type="text"
-              placeholder="Name For Job"
-              component="input"
+              name="image"
+              type="file"
+              onChange={this.fileSelecthandler}
+              validate={this.validate}
             />
-            <Field
-              name="vinNumber"
-              type="text"
-              placeholder="VIN Number"
-              component="input"
-            />
+
             <Field
               name="description"
               type="text"
-              placeholder="Description"
+              placeholder="Image Description"
               component="input"
             />
-            <button>Start New Job</button>
+            <button>Add Image and Tags</button>
           </form>
         </div>
       </React.Fragment>

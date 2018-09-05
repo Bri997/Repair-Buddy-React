@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-// import {newJobActions} from "../../../../../actions"
+import { addNewJobAction } from "../../../../../actions";
 
 import "./AddNewJobForm.css";
 
@@ -11,7 +11,9 @@ class AddNewJobForm extends Component {
       vinNumber: values.vinNumber,
       description: values.description
     };
+    this.props.dispatch(addNewJobAction(newJobDetails));
   }
+
   render() {
     return (
       <React.Fragment>
@@ -37,6 +39,7 @@ class AddNewJobForm extends Component {
               placeholder="Description"
               component="input"
             />
+
             <button>Start New Job</button>
           </form>
         </div>
