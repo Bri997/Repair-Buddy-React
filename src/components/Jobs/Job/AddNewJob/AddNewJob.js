@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-class AddNewJob extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-  render() {
-    return <React.Fragment />;
-  }
-}
+const AddNewJob = () => {
+  return (
+    <React.Fragment>
+      <div>
+        <Link to={"/AddNewJobForm"}>+ Add New Job</Link>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default AddNewJob;

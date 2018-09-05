@@ -2,23 +2,15 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 // import {newJobActions} from "../../../../../actions"
 
-import "./AddNewJobForm.css";
+import "./AddNewImageForm.css";
 
-class AddNewJobForm extends Component {
-  onSubmit(values) {
-    let newJobDetails = {
-      jobName: values.jobName,
-      vinNumber: values.vinNumber,
-      description: values.description
-    };
-  }
+class AddNewImageForm extends Component {
+  state = {};
   render() {
     return (
       <React.Fragment>
-        <div className="NewJobForm">
-          <form
-            onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-          >
+        <div className="NewImageForm">
+          <form>
             <Field
               name="jobName"
               type="text"
@@ -45,4 +37,4 @@ class AddNewJobForm extends Component {
   }
 }
 
-export default reduxForm({ form: "NewJob" })(AddNewJobForm);
+export default reduxForm({ form: "NewImage" })(AddNewImageForm);

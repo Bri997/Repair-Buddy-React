@@ -1,12 +1,12 @@
-.NewJobForm {
+.AddNewImageForm {
   text-align: center;
   margin: 0 auto;
   margin-top: 15vw;
 }
-.NewJobForm h2 {
+.AddNewImageForm h2 {
   color: #3389ff;
 }
-.NewJobForm input {
+.AddNewImageForm input {
   text-align: center;
   background-color: #e1edff;
   height: 47px;
@@ -21,12 +21,12 @@
   color: #6d89af !important;
   font-size: 1rem;
 }
-.NewJobForm a {
+.AddNewImageForm a {
   text-decoration: none;
   font-weight: bold;
 }
 
-.NewJobForm button {
+.AddNewImageForm button {
   margin-top: 10px;
   background-color: #3389ff;
   height: 47px;
@@ -37,10 +37,10 @@
   border-radius: 5px;
 }
 
-.NewJobForm button:hover {
+.AddNewImageForm button:hover {
   background-color: #2173e6;
 }
 
-.NewJobForm a :visited {
+.AddNewImageForm a :visited {
   color: rgb(15, 132, 201);
 }

@@ -14,9 +14,9 @@ class Jobs extends Component {
       <div>
         <h1>Jobs</h1>
         <div className="NewJobBtn">
-          <a href="/">+ Add New Job</a>
+          <AddNewJob />
         </div>
-        <AddNewJob />
+
         <div>{jobs}</div>
       </div>
     );

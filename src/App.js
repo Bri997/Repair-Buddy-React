@@ -7,7 +7,8 @@ import JobDetail from "./components/Jobs/Job/JobDetail/JobDetail";
 import ImageDetail from "./components/ImageDetail/ImageDetail";
 import Layout from "./components/Layout/Layout";
 import SignUp from "./components/Signup/Signup";
-
+import AddNewJobForm from "./components/Jobs/Job/AddNewJob/AddNewJobForm/AddNewJobForm";
+import AddNewImageForm from "./components/Images/AddNewImage/AddNewImageForm/AddNewImageForm";
 class App extends Component {
   render() {
     return (
@@ -21,6 +22,8 @@ class App extends Component {
           <Route exact path="/JobDetail/:id" component={JobDetail} />
           <Route exact path="/ImageDetail" component={ImageDetail} />
           <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/AddNewJobForm" component={AddNewJobForm} />
+          <Route exact path="/AddNewImageForm" component={AddNewImageForm} />
         </Layout>
       </Router>
     );
