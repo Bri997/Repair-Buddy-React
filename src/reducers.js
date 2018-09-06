@@ -78,6 +78,11 @@ const repairReducer = (state = initalState, action) => {
   //
   else if (action.type === actions.NEW_JOB_CREATION_FAILURE) {
     return Object.assign({}, state, { err: action.err });
+  } else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCESS) {
+    let job = state.jobs.find(i => i.id === action.job);
+    job.images.push(action.image);
+    console.log(job);
+    return Object.assign({}, state, { jobs: [...state.jobs] });
   }
 
   //

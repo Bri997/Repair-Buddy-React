@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { addNewJobAction } from "../../../../../actions";
+import { connect } from "react-redux";
 
 import "./AddNewJobForm.css";
 
@@ -11,7 +12,7 @@ class AddNewJobForm extends Component {
       vinNumber: values.vinNumber,
       description: values.description
     };
-    this.props.dispatch(addNewJobAction(newJobDetails));
+    this.props.dispatch(addNewJobAction(newJobDetails, this.props.user.token));
   }
 
   render() {
@@ -48,4 +49,10 @@ class AddNewJobForm extends Component {
   }
 }
 
-export default reduxForm({ form: "NewJob" })(AddNewJobForm);
+const mapStateToProps = state => ({
+  user: state.repair.user
+});
+
+export default connect(mapStateToProps)(
+  reduxForm({ form: "NewJob" })(AddNewJobForm)
+);

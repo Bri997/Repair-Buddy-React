@@ -32,11 +32,12 @@ export const signUpActions = user => dispatch => {
     });
 };
 
-export const addNewJobAction = job => dispatch => {
+export const addNewJobAction = (job, token) => dispatch => {
   fetch("http://localhost:3000/job", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json; charset=utf-8"
+      "Content-Type": "application/json; charset=utf-8",
+      "x-auth-token": token
     },
     body: JSON.stringify(job)
   }).then(res => {
@@ -54,6 +55,28 @@ export const addNewJobAction = job => dispatch => {
   });
 };
 
+export const addNewImageAction = (image, job, token) => dispatch => {
+  fetch(`http://localhost:3000/image/${job}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-auth-token": token
+    },
+    body: JSON.stringify({ userImage: image })
+  }).then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return res
+      .json()
+      .then(image => {
+        dispatch(newImageUploadSucess(image, job));
+      })
+      .catch(err => {
+        dispatch(newImageUploadFail(err));
+      });
+  });
+};
 const userCreationSucess = user => ({
   type: USER_CREATION_SUCESS,
   user
@@ -70,7 +93,7 @@ const newJobCreationSucess = job => ({
   type: NEW_JOB_CREATION_SUCESS,
   job
 });
-
+const newImageUploadSucess = iamge => ({});
 const newJobCreationFailure = err => ({
   type: NEW_JOB_CREATION_FAILURE,
   err
