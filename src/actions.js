@@ -1,7 +1,11 @@
 const USER_CREATION_SUCESS = "USER_CREATION_SUCESS";
 const USER_CREATION_FAILURE = "USER_CREATION_FAILURE";
+
 const NEW_JOB_CREATION_SUCESS = "NEW_JOB_CREATION_SUCESS";
 const NEW_JOB_CREATION_FAILURE = "NEW_JOB_CREATION_FAILURE";
+
+const NEW_IMAGE_UPLOAD_SUCESS = "NEW_IMAGE_UPLOAD_SUCESS";
+const NEW_IMAGE_UPLOAD_FAILURE = "NEW_IMAGE_UPLOAD_FAILURE";
 
 const SELECT_JOB = "SELECT_JOB";
 const CREATE_TAG = "CREATE_TAG";
@@ -73,7 +77,7 @@ export const addNewImageAction = (image, job, token) => dispatch => {
         dispatch(newImageUploadSucess(image, job));
       })
       .catch(err => {
-        dispatch(newImageUploadFail(err));
+        dispatch(newImageUploadFailure(err));
       });
   });
 };
@@ -93,7 +97,14 @@ const newJobCreationSucess = job => ({
   type: NEW_JOB_CREATION_SUCESS,
   job
 });
-const newImageUploadSucess = iamge => ({});
+const newImageUploadSucess = image => ({
+  type: NEW_IMAGE_UPLOAD_SUCESS,
+  image
+});
+const newImageUploadFailure = err => ({
+  type: NEW_IMAGE_UPLOAD_FAILURE,
+  err
+});
 const newJobCreationFailure = err => ({
   type: NEW_JOB_CREATION_FAILURE,
   err
@@ -121,6 +132,10 @@ export {
   newJobCreationFailure,
   SELECT_JOB,
   selectJob,
+  newImageUploadSucess,
+  NEW_IMAGE_UPLOAD_SUCESS,
+  NEW_IMAGE_UPLOAD_FAILURE,
+  newImageUploadFailure,
   CREATE_TAG,
   createTag
 };

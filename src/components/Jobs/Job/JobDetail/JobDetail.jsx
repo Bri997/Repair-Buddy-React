@@ -4,6 +4,7 @@ import "./JobDetail.css";
 
 import Images from "../../../Images/Images";
 import { selectJob } from "../../../../actions";
+import AddNewImage from "../../../Images/AddNewImage/AddNewImage";
 
 class JobDetail extends Component {
   constructor(props) {
@@ -22,11 +23,12 @@ class JobDetail extends Component {
     return (
       <React.Fragment>
         <div className="JobDetail">Job Detail {jobNumber}</div>
-
+        <AddNewImage />
         <div className="JobDetailArea">
           {this.job.jobName} {this.job.jobInfo}
           <Images width="35%" images={this.job.images} jobId={this.job.id} />
         </div>
+        <AddNewImage />
       </React.Fragment>
     );
   }
