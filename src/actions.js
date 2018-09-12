@@ -36,10 +36,31 @@ export const signUpActions = user => dispatch => {
     });
 };
 
-export const logInActions = user => dispatch => {
-  fetch("http://localhost:3000", {
-    //GET THE AUTH info from the user
-  });
+export const logInActions = userInfo => dispatch => {
+  fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify(userInfo)
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.text().then(token => {
+        let user = { token };
+        console.log(user);
+        return user;
+      });
+    })
+    .then(user => {
+      dispatch(userCreationSucess(user));
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch(userCreationFailure(err));
+    });
 };
 
 export const addNewJobAction = (job, token) => dispatch => {
