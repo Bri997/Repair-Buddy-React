@@ -36,6 +36,12 @@ export const signUpActions = user => dispatch => {
     });
 };
 
+export const logInActions = user => dispatch => {
+  fetch("http://localhost:3000", {
+    //GET THE AUTH info from the user
+  });
+};
+
 export const addNewJobAction = (job, token) => dispatch => {
   fetch("http://localhost:3000/job", {
     method: "POST",
@@ -59,14 +65,22 @@ export const addNewJobAction = (job, token) => dispatch => {
   });
 };
 
-export const addNewImageAction = (image, job, token) => dispatch => {
+export const addNewImageAction = (
+  image,
+  job,
+  token,
+  description
+) => dispatch => {
   fetch(`http://localhost:3000/image/${job}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "x-auth-token": token
     },
-    body: JSON.stringify({ userImage: image })
+    body: JSON.stringify({
+      userImage: image,
+      description: description
+    })
   }).then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText);

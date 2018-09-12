@@ -1,11 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
+import { logInActions } from "../../actions";
 import { Link } from "react-router-dom";
 
 import "./Login.css";
 class Login extends Component {
   onSubmit(values) {
-    console.log(values);
+    let userInfo = {
+      email: values.email,
+      password: values.password
+    };
+    this.props.dispatch(logInActions(userInfo));
   }
   state = {};
   render() {

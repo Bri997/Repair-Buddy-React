@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { reduxForm, Field, Form } from "redux-form";
 import DropZoneField from "./DropZoneField.js";
 import isEmpty from "lodash/isEmpty";
-// import {newImageAction} from "../../../../../actions"
+import { addNewImageAction } from "../../../../actions";
+import { connect } from "react-redux";
 
 import "./AddNewImageForm.css";
 
@@ -11,10 +12,14 @@ const imageIsRequired = value => (isEmpty(value) ? "Required" : undefined);
 class AddNewImageForm extends Component {
   state = { imageFile: [] };
   handleFormSubmit = formProps => {
-    const fd = new FormData();
-    fd.append("imageFile", formProps.imageToUpload[0]);
-    // append any additional Redux form fields
-    // create an AJAX request here with the created formData
+    this.props.dispatch(
+      addNewImageAction(
+        formProps.imageToUpload[0],
+        this.props.selectedJob.id,
+        this.props.user.token,
+        formProps.description
+      )
+    );
   };
 
   handleOnDrop = newImageFile => this.setState({ imageFile: newImageFile });
@@ -67,4 +72,9 @@ class AddNewImageForm extends Component {
   }
 }
 
-export default reduxForm({ form: "NewImage" })(AddNewImageForm);
+const mapStateToProps = state => ({
+  selectedJob: state.repair.selectedJob,
+  user: state.repair.user
+});
+const connectedForm = connect(mapStateToProps)(AddNewImageForm);
+export default reduxForm({ form: "NewImage" })(connectedForm);
