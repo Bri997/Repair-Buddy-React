@@ -5,6 +5,7 @@ import "./Jobs.css";
 import Job from "../Jobs/Job/Job";
 import AddNewJob from "../Jobs/Job/AddNewJob/AddNewJob";
 
+console.log(this.props);
 class Jobs extends Component {
   render() {
     const jobs = this.props.jobs.map((job, index) => {
@@ -24,6 +25,6 @@ class Jobs extends Component {
 }
 
 const mapStateToProps = state => ({
-  jobs: state.repair.jobs
+  jobs: state.repair.user.jobs
 });
 export default connect(mapStateToProps)(Jobs);

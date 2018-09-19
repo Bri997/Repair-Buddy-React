@@ -10,6 +10,8 @@ const NEW_IMAGE_UPLOAD_FAILURE = "NEW_IMAGE_UPLOAD_FAILURE";
 const SELECT_JOB = "SELECT_JOB";
 const CREATE_TAG = "CREATE_TAG";
 
+const REMOVE_TAG = "REMOVE_TAG";
+
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
     method: "POST",
@@ -48,11 +50,7 @@ export const logInActions = userInfo => dispatch => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      return res.text().then(token => {
-        let user = { token };
-        console.log(user);
-        return user;
-      });
+      return res.json();
     })
     .then(user => {
       dispatch(userCreationSucess(user));
@@ -116,6 +114,7 @@ export const addNewImageAction = (
       });
   });
 };
+
 const userCreationSucess = user => ({
   type: USER_CREATION_SUCESS,
   user
@@ -156,6 +155,12 @@ const createTag = (tag, imageId) => ({
   imageId
 });
 
+const removeTag = (tag, imageId) => ({
+  type: REMOVE_TAG,
+  tag,
+  imageId
+});
+
 export {
   USER_CREATION_SUCESS,
   USER_CREATION_FAILURE,
@@ -172,7 +177,8 @@ export {
   NEW_IMAGE_UPLOAD_FAILURE,
   newImageUploadFailure,
   CREATE_TAG,
-  createTag
+  createTag,
+  removeTag
 };
 
 //do the fetch like the user sing up option to the tag endpoint

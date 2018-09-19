@@ -9,11 +9,14 @@ import Tags from "../../Tags/Tags";
 class Job extends Component {
   state = {};
   render() {
+    const image = this.props.job.images.length ? (
+      <img width="15%" src={this.props.job.images[0].url} />
+    ) : null;
     return (
       <React.Fragment>
         <div className="UserDisplay">
           <div className="JobArea">
-            <img width="15%" src={this.props.job.images[0].url} />
+            {image}
             <h3>{this.props.job.jobName}</h3>
             <p>{this.props.job.jobInfo}</p>
 
@@ -29,23 +32,3 @@ class Job extends Component {
 }
 
 export default Job;
-// const Job = props => {
-//   return (
-//     <React.Fragment>
-//       <div className="UserDisplay">
-//         <div className="JobArea">
-//           <img width="15%" src={props.job.images[0].url} />
-//           <h3>{props.job.jobName}</h3>
-//           <p>{props.job.jobInfo}</p>
-
-//           <Link to={`/JobDetail/${props.job.id}`}>Continue >></Link>
-
-//           <p> {props.job.id}</p>
-//           <Tags className="Tag" image={props.job.images[0]} />
-//         </div>
-//       </div>
-//     </React.Fragment>
-//   );
-// };
-
-// export default Job;

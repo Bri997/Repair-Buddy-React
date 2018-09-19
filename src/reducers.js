@@ -98,6 +98,11 @@ const repairReducer = (state = initalState, action) => {
       selectedJob: { images: [...state.selectedJob.images] }
     });
   }
+  //
+  else if (action.type === action.REMOVE_TAG) {
+    let image = state.selectedJob.images.find(i => i.id === action.imageId);
+    image.tag;
+  }
   return state;
 };
 
