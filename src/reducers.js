@@ -47,15 +47,10 @@ const initalState = {
   ],
   selectedJob: null,
 
-  user: [
-    {
-      name: "Brian",
-      email: "MyEmail@gmail.com"
-    }
-  ],
+  user: null,
   err: null
 };
-
+// create an action for the err. have a comp to check for the err
 const repairReducer = (state = initalState, action) => {
   if (action.type === actions.USER_CREATION_SUCESS) {
     return Object.assign({}, state, { user: action.user });
@@ -73,7 +68,9 @@ const repairReducer = (state = initalState, action) => {
 
   //
   else if (action.type === actions.NEW_JOB_CREATION_SUCESS) {
-    return Object.assign({}, state, { jobs: [...state.jobs, action.job] });
+    return Object.assign({}, state, {
+      user: { jobs: [...state.user.jobs, action.job] }
+    });
   }
 
   //

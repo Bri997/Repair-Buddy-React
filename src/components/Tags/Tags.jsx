@@ -13,7 +13,7 @@ class Tags extends Component {
   }
 
   render() {
-    if (!this.props.image.tags) {
+    if (!this.props.image.tags.length) {
       return <React.Fragment />;
     }
 

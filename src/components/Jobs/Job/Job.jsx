@@ -20,10 +20,11 @@ class Job extends Component {
             <h3>{this.props.job.jobName}</h3>
             <p>{this.props.job.jobInfo}</p>
 
-            <Link to={`/JobDetail/${this.props.job.id}`}>Continue >></Link>
+            <Link to={`/JobDetail/${this.props.job._id}`}>Continue >></Link>
 
             <p> {this.props.job.id}</p>
-            <Tags className="Tag" image={this.props.job.images[0]} />
+            {/* I think this needs to be in the image */}
+            {/* <Tags className="Tag" image={this.props.job.images[0]} /> */}
           </div>
         </div>
       </React.Fragment>

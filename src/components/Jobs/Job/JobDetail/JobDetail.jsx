@@ -11,7 +11,7 @@ class JobDetail extends Component {
     super(props);
 
     this.job = this.props.jobs.find(
-      job => job.id === parseInt(this.props.match.params.id, 10)
+      job => job._id === this.props.match.params.id
     );
 
     this.props.dispatch(selectJob(this.job));
@@ -26,7 +26,7 @@ class JobDetail extends Component {
         <AddNewImage />
         <div className="JobDetailArea">
           {this.job.jobName} {this.job.jobInfo}
-          <Images width="35%" images={this.job.images} jobId={this.job.id} />
+          <Images width="35%" images={this.job.images} jobId={this.job._id} />
         </div>
         <AddNewImage />
       </React.Fragment>
@@ -35,6 +35,6 @@ class JobDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  jobs: state.repair.jobs
+  jobs: state.repair.user.jobs
 });
 export default connect(mapStateToProps)(JobDetail);
