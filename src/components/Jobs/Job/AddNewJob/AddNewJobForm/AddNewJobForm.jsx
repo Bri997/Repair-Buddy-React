@@ -13,6 +13,7 @@ class AddNewJobForm extends Component {
       description: values.description
     };
     this.props.dispatch(addNewJobAction(newJobDetails, this.props.user.token));
+    this.props.history.push("/jobs/");
   }
 
   render() {

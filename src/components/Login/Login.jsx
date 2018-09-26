@@ -2,6 +2,9 @@ import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
 import { logInActions } from "../../actions";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import ErrorMessages from "../containers/ErrorMessages";
 
 import "./Login.css";
 class Login extends Component {
@@ -10,10 +13,17 @@ class Login extends Component {
       email: values.email,
       password: values.password
     };
+
     this.props.dispatch(logInActions(userInfo));
+    console.log("waiting");
+    setTimeout(() => {
+      this.props.history.push("/jobs/");
+    }, 2000);
+    // this.props.history.push("/jobs/");
   }
-  state = {};
+  //
   render() {
+    //connect and check user info
     return (
       <Fragment>
         <div className="LogInArea">
@@ -39,6 +49,7 @@ class Login extends Component {
           </form>
           <p>Don't have an account?</p>
           <Link to="/signup">Sign Up Here</Link>
+          <ErrorMessages />
         </div>
       </Fragment>
     );
@@ -48,3 +59,5 @@ class Login extends Component {
 export default reduxForm({
   form: "Login"
 })(Login);
+
+//this.props.history.push("/some/Path")

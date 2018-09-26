@@ -15,17 +15,17 @@ class AddNewImageForm extends Component {
     this.props.dispatch(
       addNewImageAction(
         formProps.imageToUpload[0],
-        this.props.selectedJob.id,
+        this.props.selectedJob._id,
         this.props.user.token,
         formProps.description
       )
     );
   };
 
-  handleOnDrop = newImageFile => this.setState({ imageFile: newImageFile });
+  handleOnDrop = newImageFile => this.setState({ url: newImageFile });
 
   resetForm = () => {
-    this.setState({ imageFile: [] });
+    this.setState({ url: [] });
     this.props.reset();
   };
 
@@ -38,7 +38,7 @@ class AddNewImageForm extends Component {
               name="imageToUpload"
               component={DropZoneField}
               type="file"
-              imagefile={this.state.imageFile}
+              imagefile={this.state.url}
               handleOnDrop={this.handleOnDrop}
               validate={[imageIsRequired]}
             />

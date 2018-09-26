@@ -11,6 +11,7 @@ const SELECT_JOB = "SELECT_JOB";
 const CREATE_TAG = "CREATE_TAG";
 
 const REMOVE_TAG = "REMOVE_TAG";
+const REMOVE_JOB = "REMOVE_JOB";
 
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
@@ -54,7 +55,12 @@ export const logInActions = userInfo => dispatch => {
     })
     .then(user => {
       dispatch(userCreationSucess(user));
+      return Promise.resolve();
     })
+    // .then(url => {
+    //   this.props.history.push("/jobs/");
+    // })
+    //
     .catch(err => {
       console.log(err);
       dispatch(userCreationFailure(err));
@@ -84,22 +90,31 @@ export const addNewJobAction = (job, token) => dispatch => {
   });
 };
 
+export const removeJob = (job, token) => dispatch => {
+  fetch(`http://localhost:3000/job/:id`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-auth-token": token
+    }
+  });
+};
+
 export const addNewImageAction = (
   image,
   job,
   token,
   description
 ) => dispatch => {
+  let formData = new FormData();
+
+  formData.append("userImage", image);
+  formData.append("description", description);
+
   fetch(`http://localhost:3000/image/${job}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "x-auth-token": token
-    },
-    body: JSON.stringify({
-      userImage: image,
-      description: description
-    })
+    headers: { "x-auth-token": token },
+    body: formData
   }).then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
@@ -178,7 +193,8 @@ export {
   newImageUploadFailure,
   CREATE_TAG,
   createTag,
-  removeTag
+  removeTag,
+  REMOVE_JOB
 };
 
 //do the fetch like the user sing up option to the tag endpoint

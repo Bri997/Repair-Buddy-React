@@ -46,7 +46,7 @@ const initalState = {
     }
   ],
   selectedJob: null,
-
+  //
   user: null,
   err: null
 };
@@ -76,8 +76,9 @@ const repairReducer = (state = initalState, action) => {
   //
   else if (action.type === actions.NEW_JOB_CREATION_FAILURE) {
     return Object.assign({}, state, { err: action.err });
+  } else if (action.type === action.REMOVE_JOB) {
+    let job = state.selectedJob.job.find(j => j.id === action.jobId);
   }
-
   //
   else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCESS) {
     let job = state.jobs.find(i => i.id === action.job);
@@ -90,7 +91,7 @@ const repairReducer = (state = initalState, action) => {
   else if (action.type === actions.CREATE_TAG) {
     let image = state.selectedJob.images.find(i => i.id === action.imageId);
     image.tags.push(action.tag);
-    console.log(image);
+
     return Object.assign({}, state, {
       selectedJob: { images: [...state.selectedJob.images] }
     });

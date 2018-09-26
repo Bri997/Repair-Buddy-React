@@ -10,7 +10,10 @@ class Job extends Component {
   state = {};
   render() {
     const image = this.props.job.images.length ? (
-      <img width="15%" src={this.props.job.images[0].url} />
+      <img
+        width="15%"
+        src={"http://localhost:3000/newuploads/" + this.props.job.images[0].url}
+      />
     ) : null;
     return (
       <React.Fragment>
@@ -18,11 +21,12 @@ class Job extends Component {
           <div className="JobArea">
             {image}
             <h3>{this.props.job.jobName}</h3>
-            <p>{this.props.job.jobInfo}</p>
+            <p>{this.props.job.description}</p>
 
             <Link to={`/JobDetail/${this.props.job._id}`}>Continue >></Link>
 
             <p> {this.props.job.id}</p>
+
             {/* I think this needs to be in the image */}
             {/* <Tags className="Tag" image={this.props.job.images[0]} /> */}
           </div>
