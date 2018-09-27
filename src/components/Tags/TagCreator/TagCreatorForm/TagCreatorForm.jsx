@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { createTag } from "../../../../actions";
+import { addNewTagAction } from "../../../../actions";
 import { connect } from "react-redux";
 
 class TagCreatorForm extends Component {
@@ -8,7 +8,8 @@ class TagCreatorForm extends Component {
     super(props);
   }
   onSubmit(input) {
-    this.props.dispatch(createTag(input.tag, this.props.imageId));
+    let token = this.props.user.token;
+    this.props.dispatch(addNewTagAction(input.tag, this.props.imageId, token));
   }
   render() {
     return (
@@ -26,6 +27,9 @@ class TagCreatorForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({ selectedJob: state.repair.selectedJob });
+const mapStateToProps = state => ({
+  selectedJob: state.repair.selectedJob,
+  user: state.repair.user
+});
 const connectedForm = connect(mapStateToProps)(TagCreatorForm);
 export default reduxForm({ form: "TagCreatorForm" })(connectedForm);

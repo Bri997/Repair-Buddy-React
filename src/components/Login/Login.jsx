@@ -15,10 +15,10 @@ class Login extends Component {
     };
 
     this.props.dispatch(logInActions(userInfo));
-    console.log("waiting");
+
     setTimeout(() => {
       this.props.history.push("/jobs/");
-    }, 2000);
+    }, 1000);
     // this.props.history.push("/jobs/");
   }
   //

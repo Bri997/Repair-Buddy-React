@@ -89,8 +89,8 @@ const repairReducer = (state = initalState, action) => {
 
   //
   else if (action.type === actions.CREATE_TAG) {
-    let image = state.selectedJob.images.find(i => i.id === action.imageId);
-    image.tags.push(action.tag);
+    let image = state.selectedJob.images.find(i => i._id === action.imageId);
+    image.tag.push(action.tag);
 
     return Object.assign({}, state, {
       selectedJob: { images: [...state.selectedJob.images] }
@@ -98,7 +98,7 @@ const repairReducer = (state = initalState, action) => {
   }
   //
   else if (action.type === action.REMOVE_TAG) {
-    let image = state.selectedJob.images.find(i => i.id === action.imageId);
+    let image = state.selectedJob.images.find(i => i._id === action.imageId);
     image.tag;
   }
   return state;

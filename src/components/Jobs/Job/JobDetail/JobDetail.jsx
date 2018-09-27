@@ -5,6 +5,7 @@ import "./JobDetail.css";
 import Images from "../../../Images/Images";
 import { selectJob } from "../../../../actions";
 import AddNewImage from "../../../Images/AddNewImage/AddNewImage";
+
 import RemoveJob from "../RemoveJob";
 
 class JobDetail extends Component {

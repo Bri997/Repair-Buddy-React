@@ -13,18 +13,20 @@ class Tags extends Component {
   }
 
   render() {
-    if (!this.props.image.tags.length) {
-      return <React.Fragment />;
-    }
+    console.log(this.props);
+    // let form = null
+    // if (!this.props.image.tag.length) {
+    //   form = <React.Fragment />;
+    // }
 
-    const tags = this.props.image.tags.map((tag, index) => {
+    const tags = this.props.image.tag.map((tag, index) => {
       return <Tag name={tag} key={index} />;
     });
 
     const form = this.state.showForm ? (
       <TagCreatorForm />
     ) : (
-      <TagCreator imageId={this.props.image.id} />
+      <TagCreator imageId={this.props.image._id} />
     );
 
     return (

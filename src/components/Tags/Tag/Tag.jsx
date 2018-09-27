@@ -8,7 +8,7 @@ class Tag extends Component {
     return (
       <React.Fragment>
         <div className="Tag">
-          <p>{this.props.name}</p>
+          <p>{this.props.name.tag}</p>
           <RemoveTag />
         </div>
       </React.Fragment>

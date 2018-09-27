@@ -12,3 +12,5 @@ class ErrorMessages extends Component {
 }
 
 export default ErrorMessages;
+
+//connect to reudcer this.props.whatever

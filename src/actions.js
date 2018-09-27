@@ -8,8 +8,9 @@ const NEW_IMAGE_UPLOAD_SUCESS = "NEW_IMAGE_UPLOAD_SUCESS";
 const NEW_IMAGE_UPLOAD_FAILURE = "NEW_IMAGE_UPLOAD_FAILURE";
 
 const SELECT_JOB = "SELECT_JOB";
-const CREATE_TAG = "CREATE_TAG";
 
+const CREATE_TAG = "CREATE_TAG";
+const Create_Tag_FAILURE = "Create_Tag_FAILURE";
 const REMOVE_TAG = "REMOVE_TAG";
 const REMOVE_JOB = "REMOVE_JOB";
 
@@ -130,6 +131,28 @@ export const addNewImageAction = (
   });
 };
 
+export const addNewTagAction = (tag, imageId, token) => dispatch => {
+  fetch(`http://localhost:3000/image/${imageId}/tag`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-auth-token": token
+    },
+    body: JSON.stringify({ tag })
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json().then(tag => {
+        dispatch(createTag(tag, imageId));
+      });
+    })
+    .catch(err => {
+      dispatch(createTagfailure(err));
+    });
+};
+
 const userCreationSucess = user => ({
   type: USER_CREATION_SUCESS,
   user
@@ -168,6 +191,10 @@ const createTag = (tag, imageId) => ({
   type: CREATE_TAG,
   tag,
   imageId
+});
+const createTagfailure = err => ({
+  type: Create_Tag_FAILURE,
+  err
 });
 
 const removeTag = (tag, imageId) => ({
