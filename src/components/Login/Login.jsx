@@ -19,6 +19,7 @@ class Login extends Component {
     setTimeout(() => {
       this.props.history.push("/jobs/");
     }, 1000);
+
     // this.props.history.push("/jobs/");
   }
   //

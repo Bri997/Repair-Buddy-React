@@ -5,7 +5,7 @@ class ErrorMessages extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>{this.state.err}</p>
+        <p>{this.props.err}</p>
       </React.Fragment>
     );
   }

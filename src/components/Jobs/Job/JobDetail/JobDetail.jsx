@@ -24,7 +24,7 @@ class JobDetail extends Component {
 
     return (
       <React.Fragment>
-        <RemoveJob />
+        <RemoveJob jobId={jobNumber} />
         <div className="JobDetail">Job Detail {jobNumber}</div>
         <AddNewImage />
         <div className="JobDetailArea">

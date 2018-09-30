@@ -1,11 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-const RemoveJob = () => {
-  return (
-    <React.Fragment>
-      <button>Remove Job</button>
-    </React.Fragment>
-  );
-};
+import { removeJobAction } from "../../../actions";
 
-export default RemoveJob;
+class RemoveJob extends Component {
+  handleDelete(jobId) {
+    let token = this.props.user.token;
+    this.props.dispatch(removeJobAction(jobId, token));
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <button onClick={() => this.handleDelete(this.props.jobId)}>
+          Remove Job
+        </button>
+      </React.Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  jobs: state.repair.user.jobs,
+  user: state.repair.user
+});
+export default connect(mapStateToProps)(RemoveJob);

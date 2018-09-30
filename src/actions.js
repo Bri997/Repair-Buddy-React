@@ -12,7 +12,9 @@ const SELECT_JOB = "SELECT_JOB";
 const CREATE_TAG = "CREATE_TAG";
 const Create_Tag_FAILURE = "Create_Tag_FAILURE";
 const REMOVE_TAG = "REMOVE_TAG";
+
 const REMOVE_JOB = "REMOVE_JOB";
+const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
 
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
@@ -28,7 +30,7 @@ export const signUpActions = user => dispatch => {
       }
       return res.json().then(user => {
         user.token = res.headers.get("x-auth-token");
-        console.log(user);
+
         return user;
       });
     })
@@ -56,8 +58,10 @@ export const logInActions = userInfo => dispatch => {
     })
     .then(user => {
       dispatch(userCreationSucess(user));
+      console.log(user.token);
       return Promise.resolve();
     })
+
     // .then(url => {
     //   this.props.history.push("/jobs/");
     // })
@@ -91,14 +95,21 @@ export const addNewJobAction = (job, token) => dispatch => {
   });
 };
 
-export const removeJob = (job, token) => dispatch => {
-  fetch(`http://localhost:3000/job/:id`, {
+export const removeJobAction = (jobId, token) => dispatch => {
+  fetch(`http://localhost:3000/job/:${jobId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "x-auth-token": token
     }
-  });
+  })
+    .then(job => {
+      console.log("Removing Job");
+      dispatch(removeJob(job));
+    })
+    .catch(err => {
+      dispatch(removeJobFailure(err));
+    });
 };
 
 export const addNewImageAction = (
@@ -138,6 +149,7 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
       "Content-Type": "application/json; charset=utf-8",
       "x-auth-token": token
     },
+
     body: JSON.stringify({ tag })
   })
     .then(res => {
@@ -187,6 +199,14 @@ const selectJob = job => ({
   job
 });
 
+const removeJob = job => ({
+  type: REMOVE_JOB,
+  job
+});
+const removeJobFailure = err => ({
+  type: REMOVE_JOB_FAILURE,
+  err
+});
 const createTag = (tag, imageId) => ({
   type: CREATE_TAG,
   tag,
@@ -221,6 +241,7 @@ export {
   CREATE_TAG,
   createTag,
   removeTag,
+  removeJob,
   REMOVE_JOB
 };
 
