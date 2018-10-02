@@ -96,7 +96,7 @@ export const addNewJobAction = (job, token) => dispatch => {
 };
 
 export const removeJobAction = (jobId, token) => dispatch => {
-  fetch(`http://localhost:3000/job/:${jobId}`, {
+  fetch(`http://localhost:3000/job/${jobId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -104,8 +104,8 @@ export const removeJobAction = (jobId, token) => dispatch => {
     }
   })
     .then(job => {
+      dispatch(removeJob(jobId));
       console.log("Removing Job");
-      dispatch(removeJob(job));
     })
     .catch(err => {
       dispatch(removeJobFailure(err));
@@ -141,6 +141,8 @@ export const addNewImageAction = (
       });
   });
 };
+
+export const removeImageAction = (imageId, token) => dispatch => {};
 
 export const addNewTagAction = (tag, imageId, token) => dispatch => {
   fetch(`http://localhost:3000/image/${imageId}/tag`, {

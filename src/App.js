@@ -9,6 +9,7 @@ import Layout from "./components/Layout/Layout";
 import SignUp from "./components/Signup/Signup";
 import AddNewJobForm from "./components/Jobs/Job/AddNewJob/AddNewJobForm/AddNewJobForm";
 import AddNewImageForm from "./components/Images/AddNewImage/AddNewImageForm/AddNewImageForm";
+
 class App extends Component {
   render() {
     return (

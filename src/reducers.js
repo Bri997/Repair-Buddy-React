@@ -35,10 +35,18 @@ const repairReducer = (state = initalState, action) => {
   }
   //
   else if (action.type === action.REMOVE_JOB) {
-    let job = state.selectedJob.job.find(j => j._id === action.jobId);
+    let job = state.user.jobs.findIndex(j => j._id === action.jobId);
     console.log("Reducer job");
-    job;
+    return Object.assign({}, state, {
+      user: { jobs: [...state.users.jobs].splice(job, 1) }
+    });
+
+    //
+  } else if (action.type === action.REMOVE_JOB_FAILURE) {
+    console.log(action.err + "hello");
+    return state;
   }
+
   //
   else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCESS) {
     let job = state.jobs.find(i => i.id === action.job);
