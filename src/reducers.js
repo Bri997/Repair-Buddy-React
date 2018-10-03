@@ -25,8 +25,8 @@ const repairReducer = (state = initalState, action) => {
   //
   else if (action.type === actions.NEW_JOB_CREATION_SUCESS) {
     return Object.assign({}, state, {
-      user: { jobs: [...state.user.jobs, action.job] }
-    });
+      user: { ...state.user, jobs: [...state.user.jobs, action.job] }
+    }); // look at this.
   }
 
   //
