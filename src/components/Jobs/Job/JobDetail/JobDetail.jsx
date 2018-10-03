@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./JobDetail.css";
-
+import { Redirect } from "react-router-dom";
 import Images from "../../../Images/Images";
 import { selectJob } from "../../../../actions";
 import AddNewImage from "../../../Images/AddNewImage/AddNewImage";
@@ -15,11 +15,12 @@ class JobDetail extends Component {
     this.job = this.props.jobs.find(
       job => job._id === this.props.match.params.id
     );
-
-    this.props.dispatch(selectJob(this.job));
   }
 
   render() {
+    if (!this.props.selctedJob) {
+      return <Redirect to="/jobs" />;
+    }
     const jobNumber = this.props.match.params.id;
 
     return (
@@ -38,6 +39,7 @@ class JobDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  jobs: state.repair.user.jobs
+  jobs: state.repair.user.jobs,
+  selctedJob: state.repair.selectedJob
 });
 export default connect(mapStateToProps)(JobDetail);

@@ -12,7 +12,7 @@ class Jobs extends Component {
 
     if (loggedIn) {
       const jobs = this.props.jobs.map((job, index) => {
-        return <Job key={index} job={job} />;
+        return <Job key={index} job={job} history={this.props.history} />;
       });
       return (
         <div>

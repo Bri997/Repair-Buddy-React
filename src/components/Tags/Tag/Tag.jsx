@@ -7,6 +7,7 @@ class Tag extends Component {
   state = {
     show: false
   };
+
   render() {
     let remove = this.state.show ? <RemoveTag /> : "";
 

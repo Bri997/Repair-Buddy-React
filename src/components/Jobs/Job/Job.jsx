@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Job.css";
-
+import { connect } from "react-redux";
 // import Image from "../../Images/Image/Image"
-
+import { selectJob } from "../../../actions";
 import Tags from "../../Tags/Tags";
 
 class Job extends Component {
   state = {};
+  redirect() {
+    this.props.dispatch(selectJob(this.props.job));
+    this.props.history.push(`/JobDetail/${this.props.job._id}`);
+  }
   render() {
     const image = this.props.job.images.length ? (
       <img
@@ -23,7 +27,7 @@ class Job extends Component {
             <h3>{this.props.job.jobName}</h3>
             <p>{this.props.job.description}</p>
 
-            <Link to={`/JobDetail/${this.props.job._id}`}>Continue >></Link>
+            <button onClick={() => this.redirect()}>Continue</button>
 
             <p> {this.props.job.id}</p>
 
@@ -35,5 +39,5 @@ class Job extends Component {
     );
   }
 }
-
-export default Job;
+const mapStateToProps = state => ({});
+export default connect(mapStateToProps)(Job);
