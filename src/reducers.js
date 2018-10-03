@@ -8,6 +8,8 @@ const initalState = {
 };
 // create an action for the err. have a comp to check for the err
 const repairReducer = (state = initalState, action) => {
+  console.log("The reducer was called", action);
+
   if (action.type === actions.USER_CREATION_SUCESS) {
     return Object.assign({}, state, { user: action.user });
   }
@@ -26,7 +28,7 @@ const repairReducer = (state = initalState, action) => {
   else if (action.type === actions.NEW_JOB_CREATION_SUCESS) {
     return Object.assign({}, state, {
       user: { ...state.user, jobs: [...state.user.jobs, action.job] }
-    }); // look at this.
+    });
   }
 
   //
@@ -34,15 +36,17 @@ const repairReducer = (state = initalState, action) => {
     return Object.assign({}, state, { err: action.err });
   }
   //
-  else if (action.type === action.REMOVE_JOB) {
-    let job = state.user.jobs.findIndex(j => j._id === action.jobId);
-    console.log("Reducer job");
+  else if (action.type === actions.REMOVE_JOB_SUCCESS) {
+    let job = state.user.jobs.findIndex(j => j._id === action.job);
+    console.log("Reducer job", job);
+    const jobs = [...state.user.jobs];
+    jobs.splice(job, 1);
     return Object.assign({}, state, {
-      user: { jobs: [...state.users.jobs].splice(job, 1) }
+      user: { ...state.user, jobs: jobs }
     });
 
     //
-  } else if (action.type === action.REMOVE_JOB_FAILURE) {
+  } else if (action.type === actions.REMOVE_JOB_FAILURE) {
     console.log(action.err + "hello");
     return state;
   }

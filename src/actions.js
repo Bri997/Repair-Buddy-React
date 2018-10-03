@@ -13,8 +13,16 @@ const CREATE_TAG = "CREATE_TAG";
 const Create_Tag_FAILURE = "Create_Tag_FAILURE";
 const REMOVE_TAG = "REMOVE_TAG";
 
-const REMOVE_JOB = "REMOVE_JOB";
+const REMOVE_JOB_SUCCESS = "REMOVE_JOB_SUCCESS";
 const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
+
+const removeJobSuccess = job => {
+  console.log('Remove job success', job);
+  return {
+    type: REMOVE_JOB_SUCCESS,
+    job
+  };
+}
 
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
@@ -73,6 +81,8 @@ export const logInActions = userInfo => dispatch => {
 };
 
 export const addNewJobAction = (job, token) => dispatch => {
+  console.log('Add new job')
+  console.log(dispatch)
   fetch("http://localhost:3000/job", {
     method: "POST",
     headers: {
@@ -104,10 +114,13 @@ export const removeJobAction = (jobId, token) => dispatch => {
     }
   })
     .then(job => {
-      dispatch(removeJob(jobId));
+      console.log(dispatch);
       console.log("Removing Job");
+      dispatch(removeJobSuccess(jobId));
+      dispatch({type:'TEST', payload: 5});
     })
     .catch(err => {
+      console.log('There was an error')
       dispatch(removeJobFailure(err));
     });
 };
@@ -201,10 +214,6 @@ const selectJob = job => ({
   job
 });
 
-const removeJob = job => ({
-  type: REMOVE_JOB,
-  job
-});
 const removeJobFailure = err => ({
   type: REMOVE_JOB_FAILURE,
   err
@@ -243,8 +252,9 @@ export {
   CREATE_TAG,
   createTag,
   removeTag,
-  removeJob,
-  REMOVE_JOB
+  removeJobSuccess,
+  REMOVE_JOB_SUCCESS,
+  REMOVE_JOB_FAILURE
 };
 
 //do the fetch like the user sing up option to the tag endpoint
