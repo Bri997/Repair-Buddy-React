@@ -1,11 +1,14 @@
-const USER_CREATION_SUCESS = "USER_CREATION_SUCESS";
+const USER_CREATION_SUCCESS = "USER_CREATION_SUCCESS";
 const USER_CREATION_FAILURE = "USER_CREATION_FAILURE";
 
-const NEW_JOB_CREATION_SUCESS = "NEW_JOB_CREATION_SUCESS";
+const NEW_JOB_CREATION_SUCCESS = "NEW_JOB_CREATION_SUCCESS";
 const NEW_JOB_CREATION_FAILURE = "NEW_JOB_CREATION_FAILURE";
 
-const NEW_IMAGE_UPLOAD_SUCESS = "NEW_IMAGE_UPLOAD_SUCESS";
+const NEW_IMAGE_UPLOAD_SUCCESS = "NEW_IMAGE_UPLOAD_SUCCESS";
 const NEW_IMAGE_UPLOAD_FAILURE = "NEW_IMAGE_UPLOAD_FAILURE";
+
+const REMOVE_IMAGE_SUCCESS = "REMOVE_IMAGE_SUCCESS";
+const REMOVE_IMAGE_FAILURE = "REMOVE_IMAGE_FAILURE";
 
 const SELECT_JOB = "SELECT_JOB";
 
@@ -17,12 +20,12 @@ const REMOVE_JOB_SUCCESS = "REMOVE_JOB_SUCCESS";
 const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
 
 const removeJobSuccess = job => {
-  console.log('Remove job success', job);
+  console.log("Remove job success", job);
   return {
     type: REMOVE_JOB_SUCCESS,
     job
   };
-}
+};
 
 export const signUpActions = user => dispatch => {
   fetch("http://localhost:3000/user", {
@@ -66,6 +69,7 @@ export const logInActions = userInfo => dispatch => {
     })
     .then(user => {
       dispatch(userCreationSucess(user));
+      dispatch(saveAuthToken(user.token));
       console.log(user.token);
       return Promise.resolve();
     })
@@ -79,10 +83,14 @@ export const logInActions = userInfo => dispatch => {
       dispatch(userCreationFailure(err));
     });
 };
-
+export const saveAuthToken = authToken => {
+  try {
+    localStorage.setItem("authToken", authToken);
+  } catch (e) {}
+};
 export const addNewJobAction = (job, token) => dispatch => {
-  console.log('Add new job')
-  console.log(dispatch)
+  console.log("Add new job");
+  console.log(dispatch);
   fetch("http://localhost:3000/job", {
     method: "POST",
     headers: {
@@ -117,10 +125,10 @@ export const removeJobAction = (jobId, token) => dispatch => {
       console.log(dispatch);
       console.log("Removing Job");
       dispatch(removeJobSuccess(jobId));
-      dispatch({type:'TEST', payload: 5});
+      dispatch({ type: "TEST", payload: 5 });
     })
     .catch(err => {
-      console.log('There was an error')
+      console.log("There was an error");
       dispatch(removeJobFailure(err));
     });
 };
@@ -155,7 +163,22 @@ export const addNewImageAction = (
   });
 };
 
-export const removeImageAction = (imageId, token) => dispatch => {};
+export const removeImageAction = (imageId, token) => dispatch => {
+  fetch(`http://localhost:3000/image/${imageId}`, {
+    method: "DELETE",
+    headers: { "x-auth-token": token }
+  })
+    .then(image => {
+      console.log(dispatch);
+      console.log("Removing Job");
+      dispatch(removeImageSuccess(imageId));
+      dispatch({ type: "TEST", payload: 5 });
+    })
+    .catch(err => {
+      console.log("There was an error");
+      dispatch(removeImageFailure(err));
+    });
+};
 
 export const addNewTagAction = (tag, imageId, token) => dispatch => {
   fetch(`http://localhost:3000/image/${imageId}/tag`, {
@@ -180,8 +203,12 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
     });
 };
 
+export const removeTagAction = (imageId, token, tadId) => dispatch => {
+  fetch(``);
+};
+
 const userCreationSucess = user => ({
-  type: USER_CREATION_SUCESS,
+  type: USER_CREATION_SUCCESS,
   user
 
   //creating normal actions
@@ -193,15 +220,25 @@ const userCreationFailure = err => ({
 });
 
 const newJobCreationSucess = job => ({
-  type: NEW_JOB_CREATION_SUCESS,
+  type: NEW_JOB_CREATION_SUCCESS,
   job
 });
 const newImageUploadSucess = image => ({
-  type: NEW_IMAGE_UPLOAD_SUCESS,
+  type: NEW_IMAGE_UPLOAD_SUCCESS,
   image
 });
 const newImageUploadFailure = err => ({
   type: NEW_IMAGE_UPLOAD_FAILURE,
+  err
+});
+
+const removeImageSuccess = image => ({
+  type: REMOVE_IMAGE_SUCCESS,
+  image
+});
+
+const removeImageFailure = err => ({
+  type: REMOVE_IMAGE_FAILURE,
   err
 });
 const newJobCreationFailure = err => ({
@@ -235,18 +272,18 @@ const removeTag = (tag, imageId) => ({
 });
 
 export {
-  USER_CREATION_SUCESS,
+  USER_CREATION_SUCCESS,
   USER_CREATION_FAILURE,
   userCreationSucess,
   userCreationFailure,
-  NEW_JOB_CREATION_SUCESS,
+  NEW_JOB_CREATION_SUCCESS,
   NEW_JOB_CREATION_FAILURE,
   newJobCreationSucess,
   newJobCreationFailure,
   SELECT_JOB,
   selectJob,
   newImageUploadSucess,
-  NEW_IMAGE_UPLOAD_SUCESS,
+  NEW_IMAGE_UPLOAD_SUCCESS,
   NEW_IMAGE_UPLOAD_FAILURE,
   newImageUploadFailure,
   CREATE_TAG,
@@ -254,7 +291,11 @@ export {
   removeTag,
   removeJobSuccess,
   REMOVE_JOB_SUCCESS,
-  REMOVE_JOB_FAILURE
+  REMOVE_JOB_FAILURE,
+  removeImageSuccess,
+  REMOVE_IMAGE_SUCCESS,
+  REMOVE_IMAGE_FAILURE,
+  removeImageFailure
 };
 
 //do the fetch like the user sing up option to the tag endpoint

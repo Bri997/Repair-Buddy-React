@@ -1,18 +1,29 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { removeTagAction } from "../../../actions";
 
 class RemoveTag extends Component {
-  state = {
-    show: false
-  };
+  constructor(props) {
+    super(props);
+  }
+  handleDelete() {
+    let token = this.props.user.token;
+    this.props.dispatch(
+      removeTagAction(this.props.imageId, this.props.tagId, token)
+    );
+  }
   render() {
+    console.log(this.props.job);
     return (
       <React.Fragment>
-        <button onClick={() => this.setState({ show: !this.setState.show })}>
-          X Remove
-        </button>
+        <button onClick={() => this.handleDelete()}>X Remove</button>
       </React.Fragment>
     );
   }
 }
 
-export default RemoveTag;
+const mapStateToProps = state => ({
+  user: state.repair.user
+});
+export default connect(mapStateToProps)(RemoveTag);

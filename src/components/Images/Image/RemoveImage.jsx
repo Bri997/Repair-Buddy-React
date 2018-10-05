@@ -9,9 +9,11 @@ class RemoveImage extends Component {
     this.props.dispatch(removeImageAction(imageId, token));
   }
   render() {
+    console.log(this.props);
+
     return (
       <React.Fragment>
-        <button onClick={() => this.handleDelete(this.props.imageId)}>
+        <button onClick={() => this.handleDelete(this.props)}>
           Remove Image
         </button>
       </React.Fragment>

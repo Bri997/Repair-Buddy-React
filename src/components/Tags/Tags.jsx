@@ -3,6 +3,7 @@ import Tag from "../Tags/Tag/Tag";
 import "./Tags.css";
 import TagCreator from "./TagCreator/TagCreator";
 import TagCreatorForm from "./TagCreator/TagCreatorForm/TagCreatorForm";
+import RemoveTag from "../Tags/Tag/RemoveTag";
 
 class Tags extends Component {
   constructor(props) {
@@ -20,7 +21,13 @@ class Tags extends Component {
     // }
 
     const tags = this.props.image.tag.map((tag, index) => {
-      return <Tag name={tag} key={index} />;
+      return (
+        <React.Fragment>
+          <Tag name={tag} key={index} imageId={this.props.image._id}>
+            {" "}
+          </Tag>
+        </React.Fragment>
+      );
     });
 
     const form = this.state.showForm ? (
