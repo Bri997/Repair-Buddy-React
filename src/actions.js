@@ -196,16 +196,21 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
     });
 };
 
-export const removeTagAction = (imageId, token, tagId) => dispatch => {
+export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
   fetch(`http://localhost:3000/image/${imageId}/tag/${tagId}`, {
     method: "DELETE",
-    header: {
+    headers: {
       "Content-Type": "application/json; charset=utf-8",
       "x-auth-token": token
     }
   })
     .then(res => {
-      console.log("delete clicked");
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json().then(image => {
+        dispatch(removeTag(image, jobId));
+      });
     })
     .catch(err => {
       console.log(err);
@@ -270,10 +275,10 @@ const createTagfailure = err => ({
   err
 });
 
-const removeTag = (tag, imageId) => ({
+const removeTag = (image, jobId) => ({
   type: REMOVE_TAG,
-  tag,
-  imageId
+  image,
+  jobId
 });
 
 export {

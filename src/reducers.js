@@ -73,18 +73,23 @@ const repairReducer = (state = initalState, action) => {
     const jobs = [...state.user.jobs];
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
-      selectedJob: { images: [...state.selectedJob.images] }
+      selectedJob: {
+        ...state.selectedJob,
+        images: [...state.selectedJob.images]
+      }
     });
   }
   //
   else if (action.type === action.REMOVE_TAG) {
     console.log("Remove clicked");
-    let image = state.selectedJob.images.find(i => i._id === action.imageId);
-    image.tag;
+
     const jobs = [...state.user.jobs];
+    let job = jobs.find(j => j._id === action.jobId);
+    let image = job.images.findIndex(i => i._id === action.image._id);
+    job.images.splice(image, 1, action.image);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
-      selectedJob: { images: [...state.selectedJob.images] }
+      selectedJob: job
     });
   }
 

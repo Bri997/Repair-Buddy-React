@@ -9,13 +9,13 @@ class RemoveTag extends Component {
   }
   handleDelete() {
     let token = this.props.user.token;
+    let jobId = this.props.selectedJob._id;
     this.props.dispatch(
-      removeTagAction(this.props.imageId, this.props.tagId, token)
+      removeTagAction(this.props.imageId, this.props.tagId, jobId, token)
     );
-    console.log(this.props.imageId, this.props.tagId, "my token", token);
+    console.log(jobId);
   }
   render() {
-    console.log(this.props.job);
     return (
       <React.Fragment>
         <button onClick={() => this.handleDelete()}>X Remove</button>
@@ -25,6 +25,7 @@ class RemoveTag extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.repair.user
+  user: state.repair.user,
+  selectedJob: state.repair.selectedJob
 });
 export default connect(mapStateToProps)(RemoveTag);
