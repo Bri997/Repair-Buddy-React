@@ -6,7 +6,7 @@ import RemoveTag from "./RemoveTag";
 class Tag extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   render() {
@@ -28,3 +28,4 @@ class Tag extends Component {
 }
 
 export default Tag;
+// console.log(this.props);

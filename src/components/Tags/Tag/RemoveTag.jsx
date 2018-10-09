@@ -12,6 +12,7 @@ class RemoveTag extends Component {
     this.props.dispatch(
       removeTagAction(this.props.imageId, this.props.tagId, token)
     );
+    console.log(this.props.imageId, this.props.tagId, "my token", token);
   }
   render() {
     console.log(this.props.job);

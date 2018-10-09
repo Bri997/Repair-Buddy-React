@@ -20,7 +20,6 @@ const REMOVE_JOB_SUCCESS = "REMOVE_JOB_SUCCESS";
 const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
 
 const removeJobSuccess = job => {
-  console.log("Remove job success", job);
   return {
     type: REMOVE_JOB_SUCCESS,
     job
@@ -70,7 +69,7 @@ export const logInActions = userInfo => dispatch => {
     .then(user => {
       dispatch(userCreationSucess(user));
       dispatch(saveAuthToken(user.token));
-      console.log(user.token);
+
       return Promise.resolve();
     })
 
@@ -89,8 +88,6 @@ export const saveAuthToken = authToken => {
   } catch (e) {}
 };
 export const addNewJobAction = (job, token) => dispatch => {
-  console.log("Add new job");
-  console.log(dispatch);
   fetch("http://localhost:3000/job", {
     method: "POST",
     headers: {
@@ -122,8 +119,6 @@ export const removeJobAction = (jobId, token) => dispatch => {
     }
   })
     .then(job => {
-      console.log(dispatch);
-      console.log("Removing Job");
       dispatch(removeJobSuccess(jobId));
       dispatch({ type: "TEST", payload: 5 });
     })
@@ -169,8 +164,6 @@ export const removeImageAction = (imageId, token) => dispatch => {
     headers: { "x-auth-token": token }
   })
     .then(image => {
-      console.log(dispatch);
-      console.log("Removing Job");
       dispatch(removeImageSuccess(imageId));
       dispatch({ type: "TEST", payload: 5 });
     })
@@ -203,8 +196,20 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
     });
 };
 
-export const removeTagAction = (imageId, token, tadId) => dispatch => {
-  fetch(``);
+export const removeTagAction = (imageId, token, tagId) => dispatch => {
+  fetch(`http://localhost:3000/image/${imageId}/tag/${tagId}`, {
+    method: "DELETE",
+    header: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-auth-token": token
+    }
+  })
+    .then(res => {
+      console.log("delete clicked");
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 const userCreationSucess = user => ({

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 
 class ErrorMessages extends Component {
-  state = {};
+  state = {
+    err: ""
+  };
   render() {
     return (
       <React.Fragment>
-        <p>{this.props.err}</p>
+        <p>{this.state.err}</p>
       </React.Fragment>
     );
   }
