@@ -57,12 +57,16 @@ const repairReducer = (state = initalState, action) => {
     job.images.push(action.image);
 
     return Object.assign({}, state, { jobs: [...state.jobs] });
-  } else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
-    let image = state.selectedJob.image.findIndex(i => i._id === action.image);
-    const images = [...state.user.image];
-    images.splice = (image, 1);
+  }
+  //
+  else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
+    let job = state.user.jobs.findIndex(j => j._id === action.job);
+    console.log(job); //why dosent it have images??
+    let image = job.images.findIndex(i => i._id === action.image);
+
+    job.images.splice(image, 1);
     return Object.assign({}, state, {
-      images: { ...state.user, images: images },
+      user: { ...state.user, jobs: [...state.user.jobs] },
       selectedJob: null
     });
   }
@@ -80,7 +84,7 @@ const repairReducer = (state = initalState, action) => {
     });
   }
   //
-  else if (action.type === action.REMOVE_TAG) {
+  else if (action.type === actions.REMOVE_TAG) {
     console.log("Remove clicked");
 
     const jobs = [...state.user.jobs];
@@ -89,10 +93,14 @@ const repairReducer = (state = initalState, action) => {
     job.images.splice(image, 1, action.image);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
-      selectedJob: job
+      selectedJob: {
+        ...state.selectedJob,
+        images: [...state.selectedJob.images]
+      }
     });
+  } else if (action.type === actions.REMOVE_TAG_FAILURE) {
+    return Object.assign({}, state, { err: action.err });
   }
-
   return state;
 };
 

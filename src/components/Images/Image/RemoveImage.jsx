@@ -4,25 +4,24 @@ import { connect } from "react-redux";
 import { removeImageAction } from "../../../actions";
 
 class RemoveImage extends Component {
-  handleDelete(imageId) {
+  handleDelete() {
     let token = this.props.user.token;
-    this.props.dispatch(removeImageAction(imageId, token));
+    let imageId = this.props.imageId;
+    let jobId = this.props.selectedJob._id;
+    this.props.dispatch(removeImageAction(imageId, jobId, token));
+    console.log(imageId);
   }
   render() {
-    console.log(this.props);
-
     return (
       <React.Fragment>
-        <button onClick={() => this.handleDelete(this.props)}>
-          Remove Image
-        </button>
+        <button onClick={() => this.handleDelete()}>Remove Image</button>
       </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  image: state.repair.image,
-  user: state.repair.user
+  user: state.repair.user,
+  selectedJob: state.repair.selectedJob
 });
 export default connect(mapStateToProps)(RemoveImage);

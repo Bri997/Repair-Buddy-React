@@ -14,7 +14,9 @@ const SELECT_JOB = "SELECT_JOB";
 
 const CREATE_TAG = "CREATE_TAG";
 const Create_Tag_FAILURE = "Create_Tag_FAILURE";
+
 const REMOVE_TAG = "REMOVE_TAG";
+const REMOVE_TAG_FAILURE = "REMOVE_TAG_FAILURE";
 
 const REMOVE_JOB_SUCCESS = "REMOVE_JOB_SUCCESS";
 const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
@@ -68,7 +70,7 @@ export const logInActions = userInfo => dispatch => {
     })
     .then(user => {
       dispatch(userCreationSucess(user));
-      dispatch(saveAuthToken(user.token));
+      saveAuthToken(user.token);
 
       return Promise.resolve();
     })
@@ -158,17 +160,16 @@ export const addNewImageAction = (
   });
 };
 
-export const removeImageAction = (imageId, token) => dispatch => {
-  fetch(`http://localhost:3000/image/${imageId}`, {
+export const removeImageAction = (imageId, jobId, token) => dispatch => {
+  fetch(`http://localhost:3000/image/${imageId}/${jobId}`, {
     method: "DELETE",
     headers: { "x-auth-token": token }
   })
     .then(image => {
-      dispatch(removeImageSuccess(imageId));
-      dispatch({ type: "TEST", payload: 5 });
+      dispatch(removeImageSuccess(imageId, jobId));
     })
     .catch(err => {
-      console.log("There was an error");
+      console.log(err);
       dispatch(removeImageFailure(err));
     });
 };
@@ -213,7 +214,7 @@ export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      dispatch(removeTagFailure(err));
     });
 };
 
@@ -242,9 +243,10 @@ const newImageUploadFailure = err => ({
   err
 });
 
-const removeImageSuccess = image => ({
+const removeImageSuccess = (image, job) => ({
   type: REMOVE_IMAGE_SUCCESS,
-  image
+  image,
+  job
 });
 
 const removeImageFailure = err => ({
@@ -281,6 +283,11 @@ const removeTag = (image, jobId) => ({
   jobId
 });
 
+const removeTagFailure = err => ({
+  type: REMOVE_TAG_FAILURE,
+  err
+});
+
 export {
   USER_CREATION_SUCCESS,
   USER_CREATION_FAILURE,
@@ -299,6 +306,8 @@ export {
   CREATE_TAG,
   createTag,
   removeTag,
+  REMOVE_TAG,
+  REMOVE_TAG_FAILURE,
   removeJobSuccess,
   REMOVE_JOB_SUCCESS,
   REMOVE_JOB_FAILURE,

@@ -25,7 +25,7 @@ class RemoveTag extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.repair.user,
-  selectedJob: state.repair.selectedJob
+  selectedJob: state.repair.selectedJob,
+  user: state.repair.user
 });
 export default connect(mapStateToProps)(RemoveTag);
