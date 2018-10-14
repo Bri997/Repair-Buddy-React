@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./JobDetail.css";
 import { Redirect } from "react-router-dom";
 import Images from "../../../Images/Images";
-import { selectJob } from "../../../../actions";
+
 import AddNewImage from "../../../Images/AddNewImage/AddNewImage";
 
 import RemoveJob from "../RemoveJob";

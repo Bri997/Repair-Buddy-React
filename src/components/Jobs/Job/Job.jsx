@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./Job.css";
 import { connect } from "react-redux";
-// import Image from "../../Images/Image/Image"
 import { selectJob } from "../../../actions";
-import Tags from "../../Tags/Tags";
 
 class Job extends Component {
   state = {};

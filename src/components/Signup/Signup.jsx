@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
 import { signUpActions } from "../../actions";
-import { Redirect } from "react-router-dom";
 
 import "./Signup.css";
 

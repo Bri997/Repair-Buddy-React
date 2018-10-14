@@ -4,9 +4,6 @@ import { addNewTagAction } from "../../../../actions";
 import { connect } from "react-redux";
 
 class TagCreatorForm extends Component {
-  constructor(props) {
-    super(props);
-  }
   onSubmit(input) {
     let token = this.props.user.token;
     this.props.dispatch(addNewTagAction(input.tag, this.props.imageId, token));

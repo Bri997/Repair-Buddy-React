@@ -4,11 +4,6 @@ import "./Tag.css";
 import RemoveTag from "./RemoveTag";
 
 class Tag extends Component {
-  constructor(props) {
-    super(props);
-    // console.log(this.props);
-  }
-
   render() {
     // let remove = this.state.show ? <RemoveTag /> : "";
     return (

@@ -53,10 +53,19 @@ const repairReducer = (state = initalState, action) => {
 
   //
   else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCCESS) {
-    let job = state.jobs.find(i => i.id === action.job);
+    let job = state.user.jobs.find(i => i._id === action.job);
+    console.log(job);
     job.images.push(action.image);
-
-    return Object.assign({}, state, { jobs: [...state.jobs] });
+    const jobs = [...state.user.jobs];
+    let image = [...state.user.images];
+    return Object.assign({}, state, {
+      user: { ...state.user, jobs: jobs },
+      images: { ...state.user, images: image },
+      selectedJob: {
+        ...state.selectedJob,
+        images: [...state.selectedJob.images]
+      }
+    });
   }
   //
   else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
@@ -67,7 +76,10 @@ const repairReducer = (state = initalState, action) => {
     job.images.splice(image, 1);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: [...state.user.jobs] },
-      selectedJob: null
+      selectedJob: {
+        ...state.selectedJob,
+        images: [...state.selectedJob.images]
+      }
     });
   }
   //

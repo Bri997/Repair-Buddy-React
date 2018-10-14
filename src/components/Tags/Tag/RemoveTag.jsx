@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { removeTagAction } from "../../../actions";
 
 class RemoveTag extends Component {
-  constructor(props) {
-    super(props);
-  }
   handleDelete() {
     let token = this.props.user.token;
     let jobId = this.props.selectedJob._id;

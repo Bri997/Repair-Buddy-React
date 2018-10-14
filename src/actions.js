@@ -122,7 +122,6 @@ export const removeJobAction = (jobId, token) => dispatch => {
   })
     .then(job => {
       dispatch(removeJobSuccess(jobId));
-      dispatch({ type: "TEST", payload: 5 });
     })
     .catch(err => {
       console.log("There was an error");
@@ -154,6 +153,7 @@ export const addNewImageAction = (
       .then(image => {
         dispatch(newImageUploadSucess(image, job));
       })
+
       .catch(err => {
         dispatch(newImageUploadFailure(err));
       });
@@ -234,9 +234,10 @@ const newJobCreationSucess = job => ({
   type: NEW_JOB_CREATION_SUCCESS,
   job
 });
-const newImageUploadSucess = image => ({
+const newImageUploadSucess = (image, job) => ({
   type: NEW_IMAGE_UPLOAD_SUCCESS,
-  image
+  image,
+  job
 });
 const newImageUploadFailure = err => ({
   type: NEW_IMAGE_UPLOAD_FAILURE,

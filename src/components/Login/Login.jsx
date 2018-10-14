@@ -2,8 +2,6 @@ import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
 import { logInActions } from "../../actions";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
 import ErrorMessages from "../containers/ErrorMessages";
 
 import "./Login.css";
@@ -18,9 +16,7 @@ class Login extends Component {
 
     setTimeout(() => {
       this.props.history.push("/jobs/");
-    }, 1000);
-
-    // this.props.history.push("/jobs/");
+    }, 1500);
   }
   //
   render() {
