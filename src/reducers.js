@@ -48,7 +48,7 @@ const repairReducer = (state = initalState, action) => {
 
     //
   } else if (action.type === actions.REMOVE_JOB_FAILURE) {
-    return state;
+    return Object.assign({}, state, { err: action.err });
   }
 
   //
@@ -57,15 +57,14 @@ const repairReducer = (state = initalState, action) => {
     console.log(job);
     job.images.push(action.image);
     const jobs = [...state.user.jobs];
-    let image = [...state.user.images];
+
     return Object.assign({}, state, {
-      user: { ...state.repair.user, jobs: jobs },
-      images: { images: image },
-      selectedJob: {
-        ...state.selectedJob,
-        images: [...state.selectedJob.images]
-      }
+      user: { ...state.user, jobs: jobs },
+
+      selectedJob: job
     });
+  } else if (action.type === actions.NEW_IMAGE_UPLOAD_FAILURE) {
+    return Object.assign({}, state, { err: action.err });
   }
   //
   else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
@@ -99,15 +98,13 @@ const repairReducer = (state = initalState, action) => {
   else if (action.type === actions.REMOVE_TAG) {
     const jobs = [...state.user.jobs];
     let job = jobs.find(j => j._id === action.jobId);
-    let image = job.images.findIndex(i => i._id === action.image._id);
-    console.log(image);
-    job.images.splice(image, 1, action.image);
+    let image = job.images.find(i => i._id === action.image._id);
+    let tag = image.tag.findIndex(t => t._id === action.tagId);
+    console.log(tag);
+    image.tag.splice(tag, 1);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
-      selectedJob: {
-        ...state.selectedJob,
-        images: [...state.selectedJob.images]
-      }
+      selectedJob: job
     });
   } else if (action.type === actions.REMOVE_TAG_FAILURE) {
     return Object.assign({}, state, { err: action.err });

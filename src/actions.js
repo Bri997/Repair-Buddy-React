@@ -154,7 +154,7 @@ export const addNewImageAction = (
     return res
       .json()
       .then(image => {
-        dispatch(newImageUploadSucess(image, job));
+        dispatch(newImageUploadSuccess(image, job));
       })
 
       .catch(err => {
@@ -213,7 +213,7 @@ export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
         return Promise.reject(res.statusText);
       }
       return res.json().then(image => {
-        dispatch(removeTag(image, jobId));
+        dispatch(removeTag(image, jobId, tagId));
       });
     })
     .catch(err => {
@@ -237,7 +237,7 @@ const newJobCreationSucess = job => ({
   type: NEW_JOB_CREATION_SUCCESS,
   job
 });
-const newImageUploadSucess = (image, job) => ({
+const newImageUploadSuccess = (image, job) => ({
   type: NEW_IMAGE_UPLOAD_SUCCESS,
   image,
   job
@@ -281,10 +281,11 @@ const createTagfailure = err => ({
   err
 });
 
-const removeTag = (image, jobId) => ({
+const removeTag = (image, jobId, tagId) => ({
   type: REMOVE_TAG,
   image,
-  jobId
+  jobId,
+  tagId
 });
 
 const removeTagFailure = err => ({
@@ -303,7 +304,7 @@ export {
   newJobCreationFailure,
   SELECT_JOB,
   selectJob,
-  newImageUploadSucess,
+  newImageUploadSuccess,
   NEW_IMAGE_UPLOAD_SUCCESS,
   NEW_IMAGE_UPLOAD_FAILURE,
   newImageUploadFailure,

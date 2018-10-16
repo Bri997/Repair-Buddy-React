@@ -11,7 +11,7 @@ const imageIsRequired = value => (isEmpty(value) ? "Required" : undefined);
 
 class AddNewImageForm extends Component {
   state = { imageFile: [] };
-  handleFormSubmit = async formProps => {
+  handleFormSubmit = formProps => {
     this.props.dispatch(
       addNewImageAction(
         formProps.imageToUpload[0],
@@ -21,9 +21,7 @@ class AddNewImageForm extends Component {
       )
     );
     let jobId = this.props.selectedJob._id;
-    await (function() {
-      window.location.href = `/JobDetail/${jobId}`;
-    })();
+    this.props.history.push(`/JobDetail/${jobId}`);
   };
 
   handleOnDrop = newImageFile => this.setState({ url: newImageFile });
