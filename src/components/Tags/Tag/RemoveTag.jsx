@@ -10,12 +10,13 @@ class RemoveTag extends Component {
     this.props.dispatch(
       removeTagAction(this.props.imageId, this.props.tagId, jobId, token)
     );
-    console.log(jobId);
   }
   render() {
     return (
       <React.Fragment>
-        <button onClick={() => this.handleDelete()}>X Remove</button>
+        <button className="RemoveTagButton" onClick={() => this.handleDelete()}>
+          X Remove
+        </button>
       </React.Fragment>
     );
   }

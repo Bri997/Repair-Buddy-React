@@ -59,8 +59,8 @@ const repairReducer = (state = initalState, action) => {
     const jobs = [...state.user.jobs];
     let image = [...state.user.images];
     return Object.assign({}, state, {
-      user: { ...state.user, jobs: jobs },
-      images: { ...state.user, images: image },
+      user: { ...state.repair.user, jobs: jobs },
+      images: { images: image },
       selectedJob: {
         ...state.selectedJob,
         images: [...state.selectedJob.images]
@@ -69,7 +69,8 @@ const repairReducer = (state = initalState, action) => {
   }
   //
   else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
-    let job = state.user.jobs.findIndex(j => j._id === action.job);
+    console.log("removed image?");
+    let job = state.user.jobs.find(j => j._id === action.job);
     console.log(job); //why dosent it have images??
     let image = job.images.findIndex(i => i._id === action.image);
 
@@ -90,18 +91,16 @@ const repairReducer = (state = initalState, action) => {
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
       selectedJob: {
-        ...state.selectedJob,
         images: [...state.selectedJob.images]
       }
     });
   }
   //
   else if (action.type === actions.REMOVE_TAG) {
-    console.log("Remove clicked");
-
     const jobs = [...state.user.jobs];
     let job = jobs.find(j => j._id === action.jobId);
     let image = job.images.findIndex(i => i._id === action.image._id);
+    console.log(image);
     job.images.splice(image, 1, action.image);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },

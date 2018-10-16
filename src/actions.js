@@ -70,7 +70,8 @@ export const logInActions = userInfo => dispatch => {
     })
     .then(user => {
       dispatch(userCreationSucess(user));
-      saveAuthToken(user.token);
+      let authToken = user.token;
+      saveAuthToken(authToken);
 
       return Promise.resolve();
     })
@@ -86,8 +87,10 @@ export const logInActions = userInfo => dispatch => {
 };
 export const saveAuthToken = authToken => {
   try {
-    localStorage.setItem("authToken", authToken);
-  } catch (e) {}
+    localStorage.setItem("x-auth-token", authToken);
+  } catch (e) {
+    console.log(e);
+  }
 };
 export const addNewJobAction = (job, token) => dispatch => {
   fetch("http://localhost:3000/job", {

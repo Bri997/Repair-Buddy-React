@@ -26,3 +26,51 @@
   -o-transition: all 100ms ease;
   transition: all 100ms ease;
 }
+
+.RemoveJobButton {
+  margin-top: 10px;
+  background-color: #f64747;
+  height: 47px;
+  width: 130px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+.RemoveJobButton:hover {
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  background-color: #e93535;
+}
+
+.RemoveImageButton {
+  margin-top: 10px;
+  background-color: #f64747;
+  height: 47px;
+  width: 130px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.RemoveImageButton:hover {
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  background-color: #e93535;
+}
+
+.RemoveTagButton {
+  background-color: #f64747;
+
+  /* font-size: 1rem; */
+  color: #fff;
+
+  border-radius: 5px;
+}

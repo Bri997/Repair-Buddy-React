@@ -14,7 +14,12 @@ class RemoveImage extends Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={() => this.handleDelete()}>Remove Image</button>
+        <button
+          className="RemoveImageButton"
+          onClick={() => this.handleDelete()}
+        >
+          Remove Image
+        </button>
       </React.Fragment>
     );
   }

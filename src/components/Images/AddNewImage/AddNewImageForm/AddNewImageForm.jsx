@@ -77,8 +77,8 @@ class AddNewImageForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  selectedJob: state.repair.selectedJob,
-  user: state.repair.user
+  user: state.repair.user,
+  selectedJob: state.repair.selectedJob
 });
 const connectedForm = connect(mapStateToProps)(AddNewImageForm);
 export default reduxForm({ form: "NewImage" })(connectedForm);

@@ -39,7 +39,9 @@ class JobDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  jobs: state.repair.user.jobs,
-  selctedJob: state.repair.selectedJob
+  user: state.repair.user,
+
+  selctedJob: state.repair.selectedJob,
+  jobs: state.repair.user.jobs
 });
 export default connect(mapStateToProps)(JobDetail);

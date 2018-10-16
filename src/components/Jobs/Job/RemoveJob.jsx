@@ -11,7 +11,10 @@ class RemoveJob extends Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={() => this.handleDelete(this.props.jobId)}>
+        <button
+          className="RemoveJobButton"
+          onClick={() => this.handleDelete(this.props.jobId)}
+        >
           Remove Job
         </button>
       </React.Fragment>
