@@ -4,13 +4,12 @@ import "./Image.css";
 import RemoveImage from "./RemoveImage";
 
 class Image extends Component {
-  state = {};
   render(props) {
     return (
       <React.Fragment>
         <div className="ImageContainer">
           <img
-            style={{ width: this.props.width }}
+            style={{ width: this.props.width, margin: this.props.margin }}
             className="Image"
             src={"http://localhost:3000/newuploads/" + this.props.image.url}
           />

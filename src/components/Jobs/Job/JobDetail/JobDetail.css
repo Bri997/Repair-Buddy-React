@@ -28,6 +28,9 @@
 }
 
 .RemoveJobButton {
+  float: right;
+  margin-right: 25px;
+
   margin-top: 10px;
   background-color: #f64747;
   height: 47px;

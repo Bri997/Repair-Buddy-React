@@ -16,7 +16,13 @@ class Jobs extends Component {
       });
       return (
         <div>
-          <h1>Jobs</h1>
+          <h1
+            style={{
+              textAlign: "center"
+            }}
+          >
+            Jobs
+          </h1>
           <div className="NewJobBtn">
             <AddNewJob />
           </div>

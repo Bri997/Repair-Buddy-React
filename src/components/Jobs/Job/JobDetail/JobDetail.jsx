@@ -25,12 +25,18 @@ class JobDetail extends Component {
 
     return (
       <React.Fragment>
-        <RemoveJob jobId={jobNumber} />
-        <div className="JobDetail">Job Detail {jobNumber}</div>
+        {/* <div className="JobDetail">Job Detail {jobNumber}</div> */}
         <AddNewImage />
+        <RemoveJob jobId={jobNumber} />
         <div className="JobDetailArea">
-          {this.job.jobName} {this.job.jobInfo}
-          <Images width="35%" images={this.job.images} jobId={this.job._id} />
+          <h2 style={{ textAlign: "center" }}>{this.job.jobName}</h2>{" "}
+          {this.job.jobInfo}
+          <Images
+            width="650px"
+            margin="auto"
+            images={this.job.images}
+            jobId={this.job._id}
+          />
         </div>
         <AddNewImage />
       </React.Fragment>

@@ -12,7 +12,7 @@ class Job extends Component {
   render() {
     const image = this.props.job.images.length ? (
       <img
-        width="15%"
+        width="350px"
         src={"http://localhost:3000/newuploads/" + this.props.job.images[0].url}
       />
     ) : null;

@@ -52,20 +52,21 @@ class AddNewImageForm extends Component {
               component="input"
             />
             <button
-              type="submit"
-              className="uk-button uk-button-primary uk-button-large"
-              disabled={this.props.submitting}
-            >
-              Submit
-            </button>
-            <button
               type="button"
               className="uk-button uk-button-default uk-button-large"
               disabled={this.props.pristine || this.props.submitting}
               onClick={this.resetForm}
-              style={{ float: "right" }}
+              style={{ margin: "10px" }}
             >
               Clear
+            </button>
+            <button
+              type="submit"
+              className="uk-button uk-button-primary uk-button-large"
+              disabled={this.props.submitting}
+              style={{ margin: "10px" }}
+            >
+              Submit
             </button>
           </Form>
         </div>

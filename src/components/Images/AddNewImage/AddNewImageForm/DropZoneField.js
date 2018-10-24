@@ -29,11 +29,12 @@ export default ({
 }) => (
   <div style={{ height: 335 }}>
     <DropZone
+      className="DropZone"
       accept="image/jpeg, image/png, image/gif, image/bmp"
       className="upload-container"
       onDrop={handleOnDrop}
       onChange={file => input.onChange(file)}
-      style={{ height: 300, width: 500 }}
+      style={{ height: 300, width: 500, margin: "auto" }}
     >
       {imagefile && imagefile.length > 0 ? (
         <ul

@@ -54,7 +54,7 @@ const repairReducer = (state = initalState, action) => {
   //
   else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCCESS) {
     let job = state.user.jobs.find(i => i._id === action.job);
-    console.log(job);
+    
     job.images.push(action.image);
     const jobs = [...state.user.jobs];
 
