@@ -63,3 +63,11 @@ input:placeholder-shown {
   transition: all 500ms ease;
   font-size: 1.3rem;
 }
+@media all and (max-width: 550px) {
+  .LogInArea input {
+    width: 85%;
+  }
+  .LogInArea button {
+    width: 85%;
+  }
+}

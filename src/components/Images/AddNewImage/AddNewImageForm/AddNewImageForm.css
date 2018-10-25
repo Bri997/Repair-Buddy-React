@@ -44,3 +44,9 @@
 .AddNewImageForm a :visited {
   color: rgb(15, 132, 201);
 }
+
+@media all and (max-width: 550px) {
+  .DropZone {
+    width: 80%;
+  }
+}

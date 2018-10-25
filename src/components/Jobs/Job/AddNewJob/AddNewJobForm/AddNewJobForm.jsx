@@ -20,6 +20,7 @@ class AddNewJobForm extends Component {
     return (
       <React.Fragment>
         <div className="NewJobForm">
+          <h3> Add New Job </h3>
           <form
             onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
           >

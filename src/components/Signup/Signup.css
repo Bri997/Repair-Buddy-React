@@ -44,3 +44,12 @@
 .SignUp a :visited {
   color: rgb(15, 132, 201);
 }
+
+@media all and (max-width: 550px) {
+  .SignUp input {
+    width: 85%;
+  }
+  .SignUp button {
+    width: 85%;
+  }
+}

@@ -34,7 +34,7 @@ export default ({
       className="upload-container"
       onDrop={handleOnDrop}
       onChange={file => input.onChange(file)}
-      style={{ height: 300, width: 500, margin: "auto" }}
+      style={{ height: 300, width: 350, margin: "auto" }}
     >
       {imagefile && imagefile.length > 0 ? (
         <ul

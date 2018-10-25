@@ -32,7 +32,7 @@ class JobDetail extends Component {
           <h2 style={{ textAlign: "center" }}>{this.job.jobName}</h2>{" "}
           {this.job.jobInfo}
           <Images
-            width="650px"
+            width="80%"
             margin="auto"
             images={this.job.images}
             jobId={this.job._id}

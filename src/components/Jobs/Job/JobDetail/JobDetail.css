@@ -77,3 +77,16 @@
 
   border-radius: 5px;
 }
+@media all and (max-width: 550px) {
+  .ImageContainer {
+    width: 75%;
+    margin: auto;
+  }
+  .AddNewImage {
+    display: block;
+  }
+  .RemoveJobButton {
+    display: block;
+    text-align: center;
+  }
+}

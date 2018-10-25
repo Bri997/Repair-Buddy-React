@@ -44,3 +44,13 @@
 .NewJobForm a :visited {
   color: rgb(15, 132, 201);
 }
+
+@media all and (max-width: 550px) {
+  .NewJobForm input {
+    width: 85%;
+  }
+
+  .NewJobForm button {
+    width: 85%;
+  }
+}

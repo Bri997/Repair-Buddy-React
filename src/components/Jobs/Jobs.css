@@ -11,15 +11,33 @@
   border-radius: 10px;
   margin-top: 15px;
   padding: 25px;
-  margin-left: 5%;
-  margin-right: 5%;
+  text-align: center;
   background-color: #e8ecf1;
+  width: 65%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
 .JobArea h3 {
-  text-align: right;
+  text-align: left;
 }
 
 .JobArea p {
-  text-align: right;
+  text-align: left;
+}
+.JobArea h5 {
+  text-align: left;
+}
+
+.JobContinue {
+  margin: auto;
+}
+@media all and (max-width: 550px) {
+  .JobArea img {
+    max-width: 80%;
+  }
+  .NewJobBtn {
+    width: 80%;
+    margin-bottom: 45px;
+  }
 }
