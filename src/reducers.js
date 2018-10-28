@@ -20,6 +20,14 @@ const repairReducer = (state = initalState, action) => {
   }
 
   //
+  else if (action.type === actions.REMOVE_AUTH_TOKEN) {
+    console.log("lookie");
+
+    console.log("2");
+    return Object.assign({}, initalState);
+  }
+
+  //
   else if (action.type === actions.SELECT_JOB) {
     return Object.assign({}, state, { selectedJob: action.job });
   }
@@ -54,7 +62,7 @@ const repairReducer = (state = initalState, action) => {
   //
   else if (action.type === actions.NEW_IMAGE_UPLOAD_SUCCESS) {
     let job = state.user.jobs.find(i => i._id === action.job);
-    
+
     job.images.push(action.image);
     const jobs = [...state.user.jobs];
 
@@ -68,9 +76,8 @@ const repairReducer = (state = initalState, action) => {
   }
   //
   else if (action.type === actions.REMOVE_IMAGE_SUCCESS) {
-    console.log("removed image?");
     let job = state.user.jobs.find(j => j._id === action.job);
-    console.log(job); //why dosent it have images??
+
     let image = job.images.findIndex(i => i._id === action.image);
 
     job.images.splice(image, 1);
@@ -87,7 +94,7 @@ const repairReducer = (state = initalState, action) => {
     let image = state.selectedJob.images.find(i => i._id === action.imageId);
     image.tag.push(action.tag);
     const jobs = [...state.user.jobs];
-    console.log("tag create here");
+
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },
       selectedJob: {
@@ -97,12 +104,11 @@ const repairReducer = (state = initalState, action) => {
   }
   //
   else if (action.type === actions.REMOVE_TAG) {
-    console.log("here");
     const jobs = [...state.user.jobs];
     let job = jobs.find(j => j._id === action.jobId);
     let image = job.images.find(i => i._id === action.image._id);
     let tag = image.tag.findIndex(t => t._id === action.tagId);
-    console.log(tag);
+
     image.tag.splice(tag, 1);
     return Object.assign({}, state, {
       user: { ...state.user, jobs: jobs },

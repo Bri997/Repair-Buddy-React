@@ -12,6 +12,7 @@ class Image extends Component {
             style={{ width: this.props.width, margin: this.props.margin }}
             className="Image"
             src={"http://localhost:3000/newuploads/" + this.props.image.url}
+            alt={this.props.description}
           />
           <h3>{this.props.image.imgDescription}</h3>
 

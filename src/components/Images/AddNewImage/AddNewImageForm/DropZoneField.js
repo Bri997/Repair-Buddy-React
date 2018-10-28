@@ -31,7 +31,7 @@ export default ({
     <DropZone
       className="DropZone"
       accept="image/jpeg, image/png, image/gif, image/bmp"
-      className="upload-container"
+      // className="upload-container"
       onDrop={handleOnDrop}
       onChange={file => input.onChange(file)}
       style={{ height: 300, width: 350, margin: "auto" }}

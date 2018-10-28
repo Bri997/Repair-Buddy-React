@@ -15,6 +15,9 @@ const layout = props => (
       <li>
         <Link to="/SignUp">Sign Up</Link>
       </li>
+      <li>
+        <Link to="/LogOut">Log Out</Link>
+      </li>
     </ul>
 
     <main className="Content">{props.children}</main>

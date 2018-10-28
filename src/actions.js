@@ -21,6 +21,8 @@ const REMOVE_TAG_FAILURE = "REMOVE_TAG_FAILURE";
 const REMOVE_JOB_SUCCESS = "REMOVE_JOB_SUCCESS";
 const REMOVE_JOB_FAILURE = "REMOVE_JOB_FAILURE";
 
+const REMOVE_AUTH_TOKEN = "REMOVE_AUTH_TOKEN";
+
 const removeJobSuccess = job => {
   return {
     type: REMOVE_JOB_SUCCESS,
@@ -76,13 +78,9 @@ export const logInActions = userInfo => dispatch => {
       return Promise.resolve();
     })
 
-    // .then(url => {
-    //   this.props.history.push("/jobs/");
-    // })
-    //
     .catch(err => {
       console.log(err);
-      dispatch(userCreationFailure(err));
+      dispatch(userCreationFailure(err + " Username or Password Incorrect"));
     });
 };
 export const saveAuthToken = authToken => {
@@ -92,6 +90,11 @@ export const saveAuthToken = authToken => {
     console.log(e);
   }
 };
+
+export const removeAuthToken = () => ({
+  type: REMOVE_AUTH_TOKEN
+});
+
 export const addNewJobAction = (job, token) => dispatch => {
   fetch("http://localhost:3000/job", {
     method: "POST",
@@ -319,7 +322,8 @@ export {
   removeImageSuccess,
   REMOVE_IMAGE_SUCCESS,
   REMOVE_IMAGE_FAILURE,
-  removeImageFailure
+  removeImageFailure,
+  REMOVE_AUTH_TOKEN
 };
 
 //do the fetch like the user sing up option to the tag endpoint

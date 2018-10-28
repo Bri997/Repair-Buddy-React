@@ -14,6 +14,7 @@ class Job extends Component {
       <img
         width="55%"
         src={"http://localhost:3000/newuploads/" + this.props.job.images[0].url}
+        alt={this.props.description}
       />
     ) : null;
     return (

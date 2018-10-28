@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class ErrorMessages extends Component {
-  state = {
-    err: ""
-  };
   render() {
     return (
       <React.Fragment>
-        <p>{this.state.err}</p>
+        <p style={{ color: "red" }}>{this.props.err}</p>
       </React.Fragment>
     );
   }

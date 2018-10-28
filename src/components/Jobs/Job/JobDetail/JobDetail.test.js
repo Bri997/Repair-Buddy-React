@@ -19,8 +19,7 @@ function success() {
 
 function fetchData() {
   return dispatch => {
-    return fetch("/users.json") // Some async action with promise
-      .then(() => dispatch(success()));
+    return fetch("/users.json").then(() => dispatch(success()));
   };
 }
 
