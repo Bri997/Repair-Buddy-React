@@ -8,11 +8,12 @@ class Logout extends Component {
     this.props.dispatch(removeAuthToken());
     localStorage.removeItem("x-auth-token");
   }
-
+  componentWillMount() {
+    this.logOut();
+  }
   render() {
     return (
       <React.Fragment>
-        <div onLoad={this.logOut()} />
         <Redirect to="/" />
       </React.Fragment>
     );

@@ -6,10 +6,8 @@ const initalState = {
   user: null,
   err: null
 };
-// create an action for the err. have a comp to check for the err
-const repairReducer = (state = initalState, action) => {
-  // console.log("The reducer was called", action);
 
+const repairReducer = (state = initalState, action) => {
   if (action.type === actions.USER_CREATION_SUCCESS) {
     return Object.assign({}, state, { user: action.user });
   }
@@ -21,9 +19,6 @@ const repairReducer = (state = initalState, action) => {
 
   //
   else if (action.type === actions.REMOVE_AUTH_TOKEN) {
-    console.log("lookie");
-
-    console.log("2");
     return Object.assign({}, initalState);
   }
 

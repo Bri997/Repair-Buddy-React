@@ -1,7 +1,8 @@
 .LogInArea {
   text-align: center;
   margin: 0 auto;
-  margin-top: 15vw;
+  margin-top: 10vw;
+  max-width: 1000px;
 }
 .LogInArea h2 {
   color: #3389ff;

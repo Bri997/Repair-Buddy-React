@@ -5,17 +5,16 @@ import RemoveTag from "./RemoveTag";
 
 class Tag extends Component {
   render() {
-    // let remove = this.state.show ? <RemoveTag /> : "";
     return (
       <React.Fragment>
-        <div
-          className="Tag"
-          // onClick={() => this.setState({ show: !this.state.show })}
-        >
+        <div className="Tag">
           <p>{this.props.name.tag}</p>
-          {/* {remove} */}
 
-          <RemoveTag imageId={this.props.imageId} tagId={this.props.name._id} />
+          <RemoveTag
+            imageId={this.props.imageId}
+            tagId={this.props.name._id}
+            key={this.props.name._id}
+          />
         </div>
       </React.Fragment>
     );
@@ -23,4 +22,3 @@ class Tag extends Component {
 }
 
 export default Tag;
-// console.log(this.props);

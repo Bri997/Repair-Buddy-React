@@ -3,6 +3,8 @@ import { reduxForm, Field } from "redux-form";
 import { logInActions } from "../../actions";
 import { Link } from "react-router-dom";
 import ErrorMessages from "../containers/ErrorMessages";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import "./Login.css";
 class Login extends Component {
@@ -13,18 +15,25 @@ class Login extends Component {
     };
 
     this.props.dispatch(logInActions(userInfo));
-
-    setTimeout(() => {
-      this.props.history.push("/jobs/");
-    }, 1500);
   }
-  //
+
   render() {
-    //connect and check user info
+    if (this.props.user) {
+      return <Redirect to="/jobs" />;
+    }
     return (
       <Fragment>
         <div className="LogInArea">
           Log In
+          <div className="ContentArea">
+            <p>
+              Repair buddy is for the professional mechanic and the DYI'er.{" "}
+              <br /> Have you ever taken a part something and lose track on how
+              it went back together? <br />
+              You can now track your repair jobs by taking pictures and add
+              informative tags.
+            </p>
+          </div>
           <h3> Friendly Way To Track Your Repairs</h3>
           <h2> Repair Buddy</h2>
           <form
@@ -52,9 +61,11 @@ class Login extends Component {
     );
   }
 }
-
-export default reduxForm({
-  form: "Login"
-})(Login);
-
-//this.props.history.push("/some/Path")
+const mapStateToProps = state => ({
+  user: state.repair.user
+});
+export default connect(mapStateToProps)(
+  reduxForm({
+    form: "Login"
+  })(Login)
+);
