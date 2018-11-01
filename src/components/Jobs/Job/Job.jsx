@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Job.css";
 import { connect } from "react-redux";
 import { selectJob } from "../../../actions";
-import { API_BASE_URL } from "../../../config;
+import { API_BASE_URL } from "../../../config";
 class Job extends Component {
   state = {};
   redirect() {
