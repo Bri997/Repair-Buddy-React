@@ -14,9 +14,6 @@ import AddNewImageForm from "./components/Images/AddNewImage/AddNewImageForm/Add
 class App extends Component {
   render() {
     return (
-      // <Layout>
-      //   <Login />
-      // </Layout>
       <Router>
         <Layout>
           <Route exact path="/" component={Login} />

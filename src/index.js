@@ -6,8 +6,6 @@ import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 import store from "./store";
 
-//import layout and wrap the layout
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

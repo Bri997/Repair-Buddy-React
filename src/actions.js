@@ -31,7 +31,7 @@ const removeJobSuccess = job => {
 };
 
 export const signUpActions = user => dispatch => {
-  fetch("http://localhost:3000/user", {
+  fetch("https://repairbuddy.herokuapp.com/user", {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
@@ -57,7 +57,7 @@ export const signUpActions = user => dispatch => {
 };
 
 export const logInActions = userInfo => dispatch => {
-  fetch("http://localhost:3000/login", {
+  fetch("https://repairbuddy.herokuapp.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
@@ -96,7 +96,7 @@ export const removeAuthToken = () => ({
 });
 
 export const addNewJobAction = (job, token) => dispatch => {
-  fetch("http://localhost:3000/job", {
+  fetch("https://repairbuddy.herokuapp.com/job", {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -119,7 +119,7 @@ export const addNewJobAction = (job, token) => dispatch => {
 };
 
 export const removeJobAction = (jobId, token) => dispatch => {
-  fetch(`http://localhost:3000/job/${jobId}`, {
+  fetch(`https://repairbuddy.herokuapp.com/job/${jobId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -146,7 +146,7 @@ export const addNewImageAction = (
   formData.append("userImage", image);
   formData.append("description", description);
 
-  fetch(`http://localhost:3000/image/${job}`, {
+  fetch(`https://repairbuddy.herokuapp.com/image/${job}`, {
     method: "POST",
     headers: { "x-auth-token": token },
     body: formData
@@ -167,7 +167,7 @@ export const addNewImageAction = (
 };
 
 export const removeImageAction = (imageId, jobId, token) => dispatch => {
-  fetch(`http://localhost:3000/image/${imageId}/${jobId}`, {
+  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/${jobId}`, {
     method: "DELETE",
     headers: { "x-auth-token": token }
   })
@@ -181,7 +181,7 @@ export const removeImageAction = (imageId, jobId, token) => dispatch => {
 };
 
 export const addNewTagAction = (tag, imageId, token) => dispatch => {
-  fetch(`http://localhost:3000/image/${imageId}/tag`, {
+  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/tag`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -204,7 +204,7 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
 };
 
 export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
-  fetch(`http://localhost:3000/image/${imageId}/tag/${tagId}`, {
+  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/tag/${tagId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -227,8 +227,6 @@ export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
 const userCreationSucess = user => ({
   type: USER_CREATION_SUCCESS,
   user
-
-  //creating normal actions
 });
 
 const userCreationFailure = err => ({
@@ -325,5 +323,3 @@ export {
   removeImageFailure,
   REMOVE_AUTH_TOKEN
 };
-
-//do the fetch like the user sing up option to the tag endpoint
