@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Job.css";
 import { connect } from "react-redux";
 import { selectJob } from "../../../actions";
-
+import { API_BASE_URL } from "../../../config;
 class Job extends Component {
   state = {};
   redirect() {
@@ -13,7 +13,7 @@ class Job extends Component {
     const image = this.props.job.images.length ? (
       <img
         width="55%"
-        src={"http://localhost:3000/newuploads/" + this.props.job.images[0].url}
+        src={`${API_BASE_URL}/newuploads/` + this.props.job.images[0].url}
         alt={this.props.description}
       />
     ) : null;

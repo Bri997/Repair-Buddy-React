@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Tags from "../../Tags/Tags";
 import "./Image.css";
 import RemoveImage from "./RemoveImage";
+import { API_BASE_URL } from "../../../config";
 
 class Image extends Component {
   render(props) {
@@ -11,7 +12,7 @@ class Image extends Component {
           <img
             style={{ width: this.props.width, margin: this.props.margin }}
             className="Image"
-            src={"http://localhost:3000/newuploads/" + this.props.image.url}
+            src={`${API_BASE_URL}/newuploads/` + this.props.image.url}
             alt={this.props.description}
           />
           <h3>{this.props.image.imgDescription}</h3>

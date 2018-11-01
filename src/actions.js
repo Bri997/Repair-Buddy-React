@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./config";
 const USER_CREATION_SUCCESS = "USER_CREATION_SUCCESS";
 const USER_CREATION_FAILURE = "USER_CREATION_FAILURE";
 
@@ -31,7 +32,7 @@ const removeJobSuccess = job => {
 };
 
 export const signUpActions = user => dispatch => {
-  fetch("https://repairbuddy.herokuapp.com/user", {
+  fetch(`${API_BASE_URL}/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
@@ -57,7 +58,7 @@ export const signUpActions = user => dispatch => {
 };
 
 export const logInActions = userInfo => dispatch => {
-  fetch("https://repairbuddy.herokuapp.com/login", {
+  fetch(`${API_BASE_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8"
@@ -96,7 +97,7 @@ export const removeAuthToken = () => ({
 });
 
 export const addNewJobAction = (job, token) => dispatch => {
-  fetch("https://repairbuddy.herokuapp.com/job", {
+  fetch(`${API_BASE_URL}/job`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -119,7 +120,7 @@ export const addNewJobAction = (job, token) => dispatch => {
 };
 
 export const removeJobAction = (jobId, token) => dispatch => {
-  fetch(`https://repairbuddy.herokuapp.com/job/${jobId}`, {
+  fetch(`${API_BASE_URL}/job/${jobId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -146,7 +147,7 @@ export const addNewImageAction = (
   formData.append("userImage", image);
   formData.append("description", description);
 
-  fetch(`https://repairbuddy.herokuapp.com/image/${job}`, {
+  fetch(`${API_BASE_URL}/image/${job}`, {
     method: "POST",
     headers: { "x-auth-token": token },
     body: formData
@@ -167,7 +168,7 @@ export const addNewImageAction = (
 };
 
 export const removeImageAction = (imageId, jobId, token) => dispatch => {
-  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/${jobId}`, {
+  fetch(`${API_BASE_URL}/image/${imageId}/${jobId}`, {
     method: "DELETE",
     headers: { "x-auth-token": token }
   })
@@ -181,7 +182,7 @@ export const removeImageAction = (imageId, jobId, token) => dispatch => {
 };
 
 export const addNewTagAction = (tag, imageId, token) => dispatch => {
-  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/tag`, {
+  fetch(`${API_BASE_URL}/image/${imageId}/tag`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -204,7 +205,7 @@ export const addNewTagAction = (tag, imageId, token) => dispatch => {
 };
 
 export const removeTagAction = (imageId, tagId, jobId, token) => dispatch => {
-  fetch(`https://repairbuddy.herokuapp.com/image/${imageId}/tag/${tagId}`, {
+  fetch(`${API_BASE_URL}/image/${imageId}/tag/${tagId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
