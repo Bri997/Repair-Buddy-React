@@ -9,7 +9,6 @@ class RemoveImage extends Component {
     let imageId = this.props.imageId;
     let jobId = this.props.selectedJob._id;
     this.props.dispatch(removeImageAction(imageId, jobId, token));
-    console.log(imageId);
   }
   render() {
     return (
