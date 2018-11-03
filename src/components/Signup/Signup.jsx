@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
 import { signUpActions } from "../../actions";
-
+import ErrorMessages from "../containers/ErrorMessages";
 import "./Signup.css";
 
 class SignUp extends Component {
@@ -51,6 +51,7 @@ class SignUp extends Component {
             />
 
             <button>Create Account</button>
+            <ErrorMessages />
           </form>
         </div>
       </Fragment>

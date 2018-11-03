@@ -16,7 +16,11 @@ class Tags extends Component {
     const tags = this.props.image.tag.map((tag, index) => {
       return (
         <React.Fragment>
-          <Tag name={tag} key={index} imageId={this.props.image._id}>
+          <Tag
+            name={tag}
+            key={this.props.tag._id}
+            imageId={this.props.image._id}
+          >
             {" "}
           </Tag>
         </React.Fragment>
