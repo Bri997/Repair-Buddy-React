@@ -27,7 +27,7 @@ class Login extends Component {
           Log In
           <div className="ContentArea">
             <p>
-              Repair buddy is for the professional mechanic and the DYI'er.{" "}
+              Repair buddy is for the professional mechanic and the DIY'er.{" "}
               <br /> Have you ever taken a part something and lose track on how
               it went back together? <br />
               You can now track your repair jobs by taking pictures and add
