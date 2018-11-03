@@ -37,7 +37,7 @@ class Login extends Component {
           <h3> Friendly Way To Track Your Repairs</h3>
           <h2> Repair Buddy</h2>
           <h4>
-            Testing please use: Email: "test@gmail.com" Password: "test123"
+            Testing please use: Email: "test@mail.com" Password: "test123"
           </h4>
           <form
             onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
