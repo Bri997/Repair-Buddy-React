@@ -12,13 +12,4 @@ const store = createStore(
   /* preloadedState, */ composeEnhancers(applyMiddleware(thunk))
 );
 
-// export default createStore(
-//   combineReducers({
-//     form: formReducer,
-//     reducer: repairReducer
-//   }),
-//   applyMiddleware(thunk),
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
-
 export default store;

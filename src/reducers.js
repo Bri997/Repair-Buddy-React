@@ -1,6 +1,22 @@
 import * as actions from "./actions";
 
 const initalState = {
+  jobs: [
+    {
+      id: 1,
+      jobName: "Jetta GLI",
+      jobInfo: "Need to change door locks",
+      //this is the images within the job
+      images: [
+        {
+          url: "https://picsum.photos/200/300/?random",
+          imageDescription: "Starting Tear Down",
+          Date: "",
+          tags: ["lock", "door", "trim removal"]
+        }
+      ]
+    }
+  ],
   selectedJob: null,
   //
   user: null,

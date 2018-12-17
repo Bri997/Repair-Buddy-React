@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Job.css";
 import { connect } from "react-redux";
 import { selectJob } from "../../../actions";
-import { API_BASE_URL } from "../../../config";
 class Job extends Component {
   state = {};
   redirect() {
@@ -13,7 +12,7 @@ class Job extends Component {
     const image = this.props.job.images.length ? (
       <img
         width="55%"
-        src={`${API_BASE_URL}/newuploads/` + this.props.job.images[0].url}
+        src={this.props.job.images[0].url}
         alt={this.props.description}
       />
     ) : null;
@@ -30,8 +29,6 @@ class Job extends Component {
               Continue
             </button>
             <p> {this.props.job.id}</p>
-            {/* I think this needs to be in the image */}
-            {/* <Tags className="Tag" image={this.props.job.images[0]} /> */}
           </div>
         </div>
       </React.Fragment>
