@@ -6,7 +6,7 @@
     "dotenv": "^6.1.0",
     "dotenv-webpack": "^1.5.7",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-dropzone": "^5.0.1",
@@ -25,11 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-15": "^1.1.0",
     "react-test-renderer": "^16.5.2"
-  }
+  },
+  "heroku-run-build-script": true
 }
